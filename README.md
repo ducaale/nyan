@@ -12,7 +12,7 @@ for each sprite
 - [ ] maybe a camera should be implemented? should be useful for things like screen shake.
 - [ ] add scratch effects such as fisheye, whirl, pixlate, etc
 - [ ] add music support (start, stop, fade, volume, etc).
-- [ ] add tone support. A good example is pygame zero
+- [ ] add tone support. A good example is pygame zero's [tone generator](https://pygame-zero.readthedocs.io/en/stable/builtins.html#tone-generator)
 - [ ] add spaceship and flappy bird example
 - [ ] add custom events
-- [ ] determine if sprite or drawable is the right base term. i.e can shapes (circle, rect) and font be called a sprite
+- [ ] determine if sprite or drawable is the right base term. i.e can shapes (circle, rect) and font be called a sprite?
