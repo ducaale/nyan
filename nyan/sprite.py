@@ -1,0 +1,23 @@
+import os
+
+import pygame
+
+from .drawable_2d import Drawable2D
+
+class Sprite(Drawable2D):
+    def __init__(self, game, image, x, y, z, angle):
+        self._image = image
+        super().__init__(game, x, y, z, angle)
+
+    def _compute_primary_surface(self):
+        return pygame.image.load(os.path.join(self._image)).convert_alpha()
+    
+    @property
+    def image(self):
+        return image
+
+    @image.setter
+    def image(self, image):
+        self._image = image
+        self._primary_surface = self._compute_primary_surface()
+        self._secondary_surface = self._compute_secondary_surface()
