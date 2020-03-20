@@ -73,17 +73,3 @@ def start_program():
         _task_runner.loop.run_forever()
     finally:
         _pygame.quit()
-
-"""
-1. TODO: implement @foreach_sprite(tag=None) decorator
-this will be used for attaching a script to multiple sprites at once.
-this will be particularly useful for forever loops that should be
-running independently for each sprite
-
-2. TODO: maybe a camera should be implemented? should be useful for things
-like screen shake.
-
-3. TODO: add scratch effects such as fisheye, whirl, pixlate, etc
-
-4. TODO: add flappy bird example
-"""
