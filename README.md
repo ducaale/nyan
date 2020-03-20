@@ -4,7 +4,7 @@ This is a WIP fork of [replit-play](https://github.com/replit/play) focused on a
 with Scratch.
 
 
-## Tods
+## Todos
 
 - [ ] implement `@foreach_sprite(tag=None)` decorator which will be used for attaching a script to multiple
 sprites at once. This will be particularly useful for forever loops that should be running independently
