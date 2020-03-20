@@ -1,3 +1,5 @@
 .vscode
 examples/
 __pycache__
+.venv
+nyan.egg-info
