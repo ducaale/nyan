@@ -13,8 +13,10 @@ class Drawable2D(ABC):
         self.y = y
         self.z = z
         self._angle = angle
+
         self._size = 100
         self._transparency = 100
+        self._brightness = 0
 
         self.is_clicked = False
         self.is_hidden = False
@@ -37,6 +39,11 @@ class Drawable2D(ABC):
         )
         scaled_transparency = round((self._transparency/100) * 255)
         surface.fill((255, 255, 255, scaled_transparency), special_flags=pygame.BLEND_RGBA_MULT)
+
+        scaled_brightness = round((abs(self._brightness)/100) * 255)
+        brightness_blend_mode = pygame.BLEND_RGB_ADD if self._brightness > 0 else pygame.BLEND_RGB_SUB
+        surface.fill((scaled_brightness, scaled_brightness, scaled_brightness), special_flags=brightness_blend_mode)
+
         return surface
 
     def add_tag(self, tag):
@@ -79,10 +86,19 @@ class Drawable2D(ABC):
         return self._transparency
 
     @transparency.setter
-    def transparency(self, alpha):
-        self._transparency = clamp(alpha, 0, 100)
+    def transparency(self, amount):
+        self._transparency = clamp(amount, 0, 100)
         self._secondary_surface = self._compute_secondary_surface()
-    
+
+    @property
+    def brightness(self):
+        return self._brightness
+
+    @brightness.setter
+    def brightness(self, value):
+        self._brightness = clamp(value, -100, 100)
+        self._secondary_surface = self._compute_secondary_surface()
+
     def move(self, steps):
         angle = math.radians(self._angle)
         self.x += steps * math.cos(angle)
@@ -91,7 +107,7 @@ class Drawable2D(ABC):
     def turn(self, degrees):
         self._angle = (self._angle + degrees) % 360
         self._secondary_surface = self._compute_secondary_surface()
-    
+
     def hide(self):
         self.is_hidden = True
 

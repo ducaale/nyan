@@ -83,7 +83,7 @@ class Game():
         self.invoke_forever_callbacks()
 
     def draw(self):
-        self.screen._surface.fill((0, 0, 0))
+        self.screen._surface.fill((128, 128, 128))
         self.all_sprites = sorted(self.all_sprites, key=lambda sprite: sprite.z)
         for sprite in self.all_sprites: sprite._draw(self.screen)
         pygame.display.flip()
