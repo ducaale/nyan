@@ -4,7 +4,7 @@ from copy import copy
 
 import pygame
 
-from .utils import clamp, change_alpha, sprite_touching_sprite, point_touching_sprite
+from .utils import clamp, sprite_touching_sprite, point_touching_sprite
 
 class Drawable2D(ABC):
     def __init__(self, game, x, y, z, angle):
@@ -35,7 +35,8 @@ class Drawable2D(ABC):
             (round(surface.get_width() * (self._size/100)),
             round(surface.get_height() * (self._size/100)))
         )
-        change_alpha(surface, round((self._transparency/100) * 255))
+        scaled_transparency = round((self._transparency/100) * 255)
+        surface.fill((255, 255, 255, scaled_transparency), special_flags=pygame.BLEND_RGBA_MULT)
         return surface
 
     def add_tag(self, tag):
