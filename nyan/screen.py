@@ -10,9 +10,19 @@ class Screen():
     def width(self):
         return self._width
 
+    @width.setter
+    def width(self, width):
+        self._width = width
+        pygame.display.set_mode((self._width, self._height))
+
     @property
     def height(self):
         return self._height
+
+    @height.setter
+    def height(self, height):
+        self._height = height
+        self._surface = pygame.display.set_mode((self._width, self._height))
 
     @property
     def top(self):
