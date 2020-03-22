@@ -14,5 +14,5 @@ for each sprite
 - [ ] add music support (start, stop, fade, volume, etc).
 - [ ] add support for generating tones. A good example is pygame zero's [tone generator](https://pygame-zero.readthedocs.io/en/stable/builtins.html#tone-generator)
 - [ ] add spaceship and flappy bird example
-- [ ] add custom events
+- [x] add custom events
 - [ ] determine if sprite or drawable is the right base term. i.e can shapes (circle, rect) and font be called a sprite?

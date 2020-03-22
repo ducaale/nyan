@@ -8,6 +8,7 @@ from .game import Game as _Game
 from .screen import Screen as _Screen
 from .mouse import Mouse as _Mouse
 from .keyboard import Keyboard as _Keyboard
+from .custom_event import CustomEvent as _CustomEvent
 from .sound import Sound as _Sound
 from .task_runner import TaskRunner as _TaskRunner
 from .sprite import Sprite as _Sprite
@@ -21,8 +22,9 @@ _task_runner = _TaskRunner()
 screen = _Screen()
 mouse = _Mouse(_task_runner)
 _keyboard = _Keyboard(_task_runner)
+_custom_event = _CustomEvent(_task_runner)
 _random = _Random(screen)
-_game = _Game(_task_runner, screen, mouse, _keyboard)
+_game = _Game(_task_runner, screen, mouse, _keyboard, _custom_event)
 
 when_mouse_clicked = mouse.when_clicked
 when_mouse_click_released = mouse.when_click_released
@@ -32,6 +34,9 @@ when_key_pressed = _keyboard.when_key_pressed
 when_key_released = _keyboard.when_key_released
 when_any_key_pressed = _keyboard.when_any_key_pressed
 when_any_key_released = _keyboard.when_any_key_released
+
+broadcast = _custom_event.broadcast
+when_event_recieved = _custom_event.when_event_recieved
 
 random_color = _random.random_color
 random_number = _random.random_number

@@ -6,11 +6,12 @@ import pygame
 from .utils import make_async
 
 class Game():
-    def __init__(self, task_runner, screen, mouse, keyboard):
+    def __init__(self, task_runner, screen, mouse, keyboard, custom_event):
         self.task_runner = task_runner
         self.screen = screen
         self.mouse = mouse
         self.keyboard = keyboard
+        self.custom_event = custom_event
 
         self.all_sprites = []
         self.sprite_groups = defaultdict(set)
@@ -88,6 +89,7 @@ class Game():
     def invoke_callbacks(self):
         self.mouse._invoke_callbacks()
         self.keyboard.invoke_callbacks()
+        self.custom_event.invoke_callbacks()
         self.invoke_forever_callbacks()
 
     def draw(self):
