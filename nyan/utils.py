@@ -1,4 +1,5 @@
 import asyncio
+from functools import wraps
 
 import pygame
 
@@ -19,6 +20,7 @@ def sprite_touching_sprite(a, b):
 
 def make_async(func):
     if asyncio.iscoroutinefunction(func): return func
+    @wraps(func)
     async def async_func(*args, **kwargs):
         return func(*args, **kwargs)
     return async_func

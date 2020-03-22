@@ -6,7 +6,7 @@ with Scratch.
 
 ## Todos
 
-- [ ] implement `@foreach_sprite(tag=None)` decorator which will be used for attaching a script to multiple
+- [x] implement `@foreach_sprite(tag=None)` decorator which will be used for attaching a script to multiple
 sprites at once. This will be particularly useful for forever loops that should be running independently
 for each sprite
 - [ ] maybe a camera should be implemented? should be useful for things like screen shake.

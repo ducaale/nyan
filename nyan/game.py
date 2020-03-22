@@ -53,11 +53,19 @@ class Game():
     
     def invoke_when_program_starts_callbacks(self):
         for callback in self.when_program_starts_callbacks:
-            self.task_runner.run(callback)
+            if hasattr(callback, 'tags'):
+                for sprite in self.get_sprites(*callback.tags):
+                    self.task_runner.run(callback, sprite)
+            else:
+                self.task_runner.run(callback)
     
     def invoke_forever_callbacks(self):
         for callback in self.forever_callbacks:
-            self.task_runner.run(callback)
+            if hasattr(callback, 'tags'):
+                for sprite in self.get_sprites(*callback.tags):
+                    self.task_runner.run(callback, sprite)
+            else:
+                self.task_runner.run(callback)
 
     def handle_events(self):
         self.mouse._clear_release_events()
