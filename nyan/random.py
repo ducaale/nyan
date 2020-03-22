@@ -23,6 +23,18 @@ class Random():
         )
 
     def random_position(self):
+        """
+        Returns a random position on the screen. A position has an `x` and `y` e.g.:
+        ```
+        position = nyan.random_position()
+        sprite.x = position.x
+        sprite.y = position.y
+        ```
+        or equivalently:
+        ```
+        sprite.go_to(nyan.random_position())
+        ```
+        """
         return Position(
             self.random_number(self.screen.left, self.screen.right),
             self.random_number(self.screen.bottom, self.screen.top)

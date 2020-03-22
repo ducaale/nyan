@@ -62,6 +62,16 @@ class Keyboard():
         return decorator
 
     def key_is_pressed(self, *keys):
+        """
+        Returns True if any of the given keys are pressed.
+        Example:
+        ```
+        @nyan.repeat_forever
+        async def do():
+            if nyan.key_is_pressed('up', 'w'):
+                print('up or w pressed')
+        ```
+        """
         for key in keys:
             if key in self.pressed_keys:
                 return True

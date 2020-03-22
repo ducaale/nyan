@@ -55,10 +55,29 @@ def new_sound(sound):
     return _Sound(sound)
 
 def when_program_starts(func):
+    """
+    Call code right when the program starts.
+    Used like this:
+    ```
+    @nyan.when_program_starts
+    def do():
+        print('the program just started!')
+    ```
+    """
     _game.register_when_program_starts_callbacks(func)
     return func
 
 def repeat_forever(func):
+    """
+    Calls the given function repeatedly in the game loop.
+    Example:
+    ```
+    text = nyan.new_text('hello world')
+    @nyan.repeat_forever
+    async def do():
+        text.turn(degrees=15)
+    ```
+    """
     _game.register_forever_callback(func)
     return func
 
@@ -77,16 +96,14 @@ both tags or one of them?
 """
 def foreach_sprite(*tags):
     """
-    Calls the given function for each sprite that has one of the passed tags.
-    Should only be used with `@repeat_forever` and `@when_program_starts`
-    decorators. Example:
-
+    Calls the given function for each sprite that has any of the passed tags. Example:
     ```
-    @nyan.when_program_starts
-    @nyan.foreach_sprite('player')
-    def print_coordinates(player):
-        print(type(player), player.x, player.y)
+    @nyan.repeat_forever
+    @nyan.foreach_sprite('projectile')
+    async def propel_projectile(projectile):
+        projectile.move(25)
     ```
+    PS: Should only be used with `@repeat_forever` and `@when_program_starts` decorators
     """
     def decorator(func):
         func.tags = tags
@@ -94,10 +111,22 @@ def foreach_sprite(*tags):
     return decorator
 
 async def timer(seconds=1.0):
+    """
+    Wait a number of seconds. Used with the await keyword like this:
+    ```
+    @nyan.repeat_forever
+    async def do():
+        await nyan.timer(seconds=2)
+        print('hi')
+    ```
+    """
     await _asyncio.sleep(seconds)
-    return True
 
 def start_program():
+    """
+    Calling this function starts your program running.
+    `nyan.start_program()` should almost certainly go at the very end of your program.
+    """
     _game.invoke_when_program_starts_callbacks()
     _task_runner.loop.call_soon(_game.run)
     try:
