@@ -40,9 +40,7 @@ class Mouse():
         self._when_click_released_callbacks.append(make_async(func))
         return func
 
-    def distance_to(self, x=None, y=None):
-        assert (x is not None)
-
+    def distance_to(self, x, y=None):
         try:
             # x can either by a number or a sprite. If it's a sprite:
             x = x.x
