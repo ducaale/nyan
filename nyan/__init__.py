@@ -96,14 +96,15 @@ both tags or one of them?
 """
 def foreach_sprite(*tags):
     """
-    Calls the given function for each sprite that has any of the passed tags. Example:
+    Calls the given function for each sprite that has any of the passed tags.
+    To be used in conjunction with `@repeat_forever` and `@when_program_starts`
+    decorators. Example:
     ```
     @nyan.repeat_forever
     @nyan.foreach_sprite('projectile')
     async def propel_projectile(projectile):
         projectile.move(25)
     ```
-    PS: Should only be used with `@repeat_forever` and `@when_program_starts` decorators
     """
     def decorator(func):
         func.tags = tags
