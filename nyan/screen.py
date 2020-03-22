@@ -13,7 +13,7 @@ class Screen():
     @width.setter
     def width(self, width):
         self._width = width
-        pygame.display.set_mode((self._width, self._height))
+        self._surface = pygame.display.set_mode((self._width, self._height))
 
     @property
     def height(self):
