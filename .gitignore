@@ -1,5 +1,6 @@
 .vscode
-examples/
+examples/*
+!examples/flappybird
 __pycache__
 .venv
 nyan.egg-info
