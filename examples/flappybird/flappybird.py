@@ -1,14 +1,13 @@
 import nyan
 
-BASE_DIR = 'examples/flappybird/'
 PIPE_GAP = 115
 FLAP_STRENGTH = 12.0
 GRAVITY = 1.6
 
-background = nyan.new_sprite(BASE_DIR + 'background.png')
-pipe_top = nyan.new_sprite(BASE_DIR + 'top.png')
-pipe_bottom = nyan.new_sprite(BASE_DIR + 'bottom.png')
-bird = nyan.new_sprite(BASE_DIR + 'bird0.png')
+background = nyan.new_sprite('background.png')
+pipe_top = nyan.new_sprite('top.png')
+pipe_bottom = nyan.new_sprite('bottom.png')
+bird = nyan.new_sprite('bird0.png')
 
 nyan.screen.width = 300
 nyan.screen.height = 531
@@ -30,7 +29,7 @@ def move_pipes():
 @nyan.repeat_forever
 async def animate_bird():
     for image in ['bird0.png', 'bird1.png', 'bird2.png']:
-        bird.image = BASE_DIR + image
+        bird.image = image
         await nyan.timer(0.1)
 
 @nyan.repeat_forever
