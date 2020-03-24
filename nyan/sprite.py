@@ -10,8 +10,8 @@ class Sprite(Drawable2D):
         super().__init__(game, x, y, z, angle)
 
     def _compute_primary_surface(self):
-        return pygame.image.load(os.path.join(self._image)).convert_alpha()
-    
+        return pygame.image.load(os.path.join('assets', self._image)).convert_alpha()
+ 
     @property
     def image(self):
         return image

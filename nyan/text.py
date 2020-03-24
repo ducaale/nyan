@@ -14,7 +14,8 @@ class Text(Drawable2D):
         super().__init__(game, x, y, z, angle)
 
     def _compute_primary_surface(self):
-        pygame_font = pygame.font.Font(self._font, self._font_size)
+        font = self._font and os.path.join('assets', self._font)
+        pygame_font = pygame.font.Font(font, self._font_size)
         surface = pygame_font.render(self._text, True, color_name_to_rgb(self._color))
         return surface
 
