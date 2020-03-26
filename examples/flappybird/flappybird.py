@@ -12,6 +12,7 @@ bird = nyan.new_sprite('bird0.png')
 nyan.screen.width = 300
 nyan.screen.height = 531
 background.size = 75
+bird.dead = False
 
 @nyan.when_program_starts
 def do():
@@ -28,6 +29,10 @@ def move_pipes():
 
 @nyan.repeat_forever
 async def animate_bird():
+    if bird.dead:
+        bird.image = 'birddead.png'
+        return
+
     for image in ['bird0.png', 'bird1.png', 'bird2.png']:
         bird.image = image
         await nyan.timer(0.1)
@@ -37,7 +42,15 @@ async def do():
     bird.vy -= GRAVITY
     bird.y += bird.vy
     bird.angle = bird.vy * 3
-    if nyan.key_is_pressed('space'):
+
+    if bird.is_touching(pipe_top) or bird.is_touching(pipe_bottom):
+        bird.dead = True
+    if bird.y > nyan.screen.top or bird.y < nyan.screen.bottom:
+        bird.dead = True
+
+@nyan.when_key_pressed('space')
+async def flap_wings(key):
+    if not bird.dead:
         bird.vy = FLAP_STRENGTH
 
 def reset_pipes():
