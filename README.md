@@ -1,4 +1,4 @@
-# Nyan
+# nyan
 
 This is a WIP fork of [replit-play](https://github.com/replit/play) focused on achieving feature parity
 with Scratch.
@@ -15,4 +15,5 @@ for each sprite
 - [ ] add support for generating tones. A good example is pygame zero's [tone generator](https://pygame-zero.readthedocs.io/en/stable/builtins.html#tone-generator)
 - [ ] add spaceship and flappy bird example
 - [x] add custom events
+- [x] add packager
 - [ ] determine if sprite or drawable is the right base term. i.e can shapes (circle, rect) and font be called a sprite?
