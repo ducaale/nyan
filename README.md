@@ -16,7 +16,7 @@ for each sprite
 - [ ] add spaceship and flappy bird example
 - [x] add custom events
 - [x] add nyan_packager
-- [ ] add option to pass icon in nyan_packager
+- [x] add option to pass icon in nyan_packager
 - [ ] determine if sprite or drawable is the right base term. i.e can shapes (circle, rect) and font be called a sprite?
 - [ ] add @nyan.when_sprite_clicked() and @sprite.when_clicked
 - [ ] copy replit-play docs
