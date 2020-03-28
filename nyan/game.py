@@ -51,7 +51,7 @@ class Game():
 
     def register_forever_callback(self, func):
         self.forever_callbacks.append(make_async(func))
-    
+
     def invoke_when_program_starts_callbacks(self):
         for callback in self.when_program_starts_callbacks:
             if hasattr(callback, 'tags'):
@@ -59,7 +59,7 @@ class Game():
                     self.task_runner.run(callback, sprite)
             else:
                 self.task_runner.run(callback)
-    
+
     def invoke_forever_callbacks(self):
         for callback in self.forever_callbacks:
             if hasattr(callback, 'tags'):
@@ -97,7 +97,7 @@ class Game():
         self.all_sprites = sorted(self.all_sprites, key=lambda sprite: sprite.z)
         for sprite in self.all_sprites: sprite._draw(self.screen)
         pygame.display.flip()
-    
+
     def run(self):
         self.clock.tick(60)
         self.handle_events()
