@@ -22,3 +22,4 @@ for each sprite
 - [ ] copy replit-play docs
 - [ ] `@nyan.gamestate()` decorator for running script in a particular state
 - [ ] global object for storing data https://stackoverflow.com/questions/4984647/accessing-dict-keys-like-an-attribute
+- [x] add scratch like timer that can be resetted

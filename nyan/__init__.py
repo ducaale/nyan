@@ -16,6 +16,7 @@ from .text import Text as _Text
 from .rect import Rect as _Rect
 from .circle import Circle as _Circle
 from .random import Random as _Random
+from .timer import new_timer
 
 _pygame.init()
 _task_runner = _TaskRunner()
@@ -116,13 +117,13 @@ def foreach_sprite(*tags):
         return func
     return decorator
 
-async def timer(seconds=1.0):
+async def sleep(seconds=1.0):
     """
     Wait a number of seconds. Used with the await keyword like this:
     ```
     @nyan.repeat_forever
     async def do():
-        await nyan.timer(seconds=2)
+        await nyan.sleep(seconds=2)
         print('hi')
     ```
     """

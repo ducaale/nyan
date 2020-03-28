@@ -35,7 +35,7 @@ async def animate_bird():
 
     for image in ['bird0.png', 'bird1.png', 'bird2.png']:
         bird.image = image
-        await nyan.timer(0.1)
+        await nyan.sleep(0.1)
 
 @nyan.repeat_forever
 async def do():
