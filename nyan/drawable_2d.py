@@ -4,7 +4,7 @@ from copy import copy
 
 import pygame
 
-from .utils import clamp, sprite_touching_sprite, point_touching_sprite
+from .utils import clamp, sprite_touching_sprite, point_touching_sprite, make_async
 
 class Drawable2D(ABC):
     def __init__(self, game, x, y, z, angle):
@@ -20,6 +20,7 @@ class Drawable2D(ABC):
 
         self.is_hidden = False
         self._tags = set()
+        self._when_clicked_callbacks = []
 
         self._primary_surface = self._compute_primary_surface()
         self._secondary_surface = self._compute_secondary_surface()
@@ -44,6 +45,13 @@ class Drawable2D(ABC):
         surface.fill((scaled_brightness, scaled_brightness, scaled_brightness), special_flags=brightness_blend_mode)
 
         return surface
+
+    def _invoke_when_clicked_callbacks(self, task_runner):
+        for callback in self._when_clicked_callbacks:
+            task_runner.run(callback)
+
+    def when_clicked(self, callback):
+        self._when_clicked_callbacks.append(make_async(callback))
 
     def add_tag(self, tag):
         self._tags.add(tag)

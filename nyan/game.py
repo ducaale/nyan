@@ -61,6 +61,7 @@ class Game():
         self.mouse._invoke_callbacks(self.task_runner)
         self.keyboard.invoke_callbacks(self.task_runner)
         self.custom_event.invoke_callbacks(self.task_runner)
+        self.sprite_manager.invoke_callbacks(self.task_runner, self.mouse)
         self.invoke_forever_callbacks()
 
     def draw(self):

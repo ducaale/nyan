@@ -32,12 +32,12 @@ class SpriteManager():
         for tag in sprite._tags:
             self.remove_sprite_from_group(sprite, tag)
 
-    def invoke_sprite_clicked_callbacks(self, task_runner, mouse):
-        if not self.mouse._is_clicked_this_frame: return
+    def invoke_callbacks(self, task_runner, mouse):
+        if not mouse._is_clicked_this_frame: return
 
         for sprite in self.all_sprites:
             if sprite.is_touching(mouse):
-                sprite._invoke_clicked_callbacks(self.task_runner)
+                sprite._invoke_when_clicked_callbacks(task_runner)
 
     def draw(self, screen):
         self.all_sprites = sorted(self.all_sprites, key=lambda sprite: sprite.z)
