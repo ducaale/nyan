@@ -48,9 +48,9 @@ async def do():
     if bird.y > nyan.screen.top or bird.y < nyan.screen.bottom:
         bird.dead = True
 
-@nyan.when_key_pressed('space')
-async def flap_wings(key):
-    if not bird.dead:
+@nyan.repeat_forever
+async def control_bird():
+    if not bird.dead and nyan.key_is_pressed('space'):
         bird.vy = FLAP_STRENGTH
 
 def reset_pipes():
