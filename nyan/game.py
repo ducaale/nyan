@@ -58,9 +58,9 @@ class Game():
                 self.keyboard.register_key_up_event(event)
 
     def invoke_callbacks(self):
-        self.mouse._invoke_callbacks()
-        self.keyboard.invoke_callbacks()
-        self.custom_event.invoke_callbacks()
+        self.mouse._invoke_callbacks(self.task_runner)
+        self.keyboard.invoke_callbacks(self.task_runner)
+        self.custom_event.invoke_callbacks(self.task_runner)
         self.invoke_forever_callbacks()
 
     def draw(self):

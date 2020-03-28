@@ -3,10 +3,9 @@ from collections import defaultdict
 from .utils import make_async
 
 class CustomEvent():
-    def __init__(self, task_runner):
+    def __init__(self):
         self.broadcasted_events = set()
         self.callbacks = defaultdict(list)
-        self.task_runner = task_runner
 
     def broadcast(self, event):
         self.broadcasted_events.add(event)
@@ -17,9 +16,9 @@ class CustomEvent():
             return func
         return decorator
 
-    def invoke_callbacks(self):
+    def invoke_callbacks(self, task_runner):
         for event in self.broadcasted_events:
             for callback in self.callbacks[event]:
-                self.task_runner.run(callback)
+                task_runner.run(callback)
 
         self.broadcasted_events.clear()

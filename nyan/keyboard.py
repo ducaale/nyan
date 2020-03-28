@@ -7,12 +7,11 @@ from .utils import make_async
 ANY_KEY = 'any_key'
 
 class Keyboard():
-    def __init__(self, task_runner):
+    def __init__(self):
         self.pressed_keys = set()
         self.released_keys = set()
         self.keypress_callbacks = defaultdict(list)
         self.keyrelease_callbacks = defaultdict(list)
-        self.task_runner = task_runner
 
     def register_key_down_event(self, event):
         if event.key in key_map:
@@ -26,18 +25,18 @@ class Keyboard():
     def clear_release_events(self):
         self.released_keys.clear()
 
-    def invoke_callbacks(self):
+    def invoke_callbacks(self, task_runner):
         for key in self.pressed_keys:
             for callback in self.keypress_callbacks[key]:
-                self.task_runner.run(callback, key)
+                task_runner.run(callback, key)
             for callback in self.keypress_callbacks[ANY_KEY]:
-                self.task_runner.run(callback, key)
+                task_runner.run(callback, key)
         
         for key in self.released_keys:
             for callback in self.keyrelease_callbacks[key]:
-                self.task_runner.run(callback, key)
+                task_runner.run(callback, key)
             for callback in self.keyrelease_callbacks[ANY_KEY]:
-                self.task_runner.run(callback, key)
+                task_runner.run(callback, key)
 
     def when_any_key_pressed(self, func):
         self.keypress_callbacks[ANY_KEY].append(make_async(func))

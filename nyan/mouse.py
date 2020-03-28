@@ -3,14 +3,13 @@ import math
 from .utils import point_touching_sprite, make_async
 
 class Mouse():
-    def __init__(self, task_runner):
+    def __init__(self):
         self.x = 0
         self.y = 0
         self.is_clicked = False
         self.is_click_relased = False
         self._when_clicked_callbacks = []
         self._when_click_released_callbacks = []
-        self._task_runner = task_runner
 
     def _register_click_event(self):
         self.is_clicked = True
@@ -22,14 +21,14 @@ class Mouse():
     def _clear_release_events(self):
         self.is_click_relased = False
 
-    def _invoke_callbacks(self):
+    def _invoke_callbacks(self, task_runner):
         if self.is_clicked:
             for callback in self._when_clicked_callbacks:
-                self._task_runner.run(callback)
+                task_runner.run(callback)
 
         if self.is_click_relased:
             for callback in self._when_click_released_callbacks:
-                self._task_runner.run(callback)
+                task_runner.run(callback)
 
     def is_touching(self, other):
         return point_touching_sprite(self, other)
