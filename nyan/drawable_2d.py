@@ -18,7 +18,6 @@ class Drawable2D(ABC):
         self._transparency = 100
         self._brightness = 0
 
-        self.is_clicked = False
         self.is_hidden = False
         self._tags = set()
 

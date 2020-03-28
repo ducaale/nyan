@@ -5,6 +5,7 @@ import asyncio as _asyncio
 import pygame as _pygame
 
 from .game import Game as _Game
+from .sprite_manager import SpriteManager as _SpriteManager
 from .screen import Screen as _Screen
 from .mouse import Mouse as _Mouse
 from .keyboard import Keyboard as _Keyboard
@@ -19,13 +20,15 @@ from .random import Random as _Random
 from .timer import new_timer
 
 _pygame.init()
+
 _task_runner = _TaskRunner()
 screen = _Screen()
 mouse = _Mouse(_task_runner)
 _keyboard = _Keyboard(_task_runner)
 _custom_event = _CustomEvent(_task_runner)
 _random = _Random(screen)
-_game = _Game(_task_runner, screen, mouse, _keyboard, _custom_event)
+_sprite_manager = _SpriteManager()
+_game = _Game(_task_runner, _sprite_manager, screen, mouse, _keyboard, _custom_event)
 
 when_mouse_clicked = mouse.when_clicked
 when_mouse_click_released = mouse.when_click_released
@@ -43,19 +46,19 @@ random_color = _random.random_color
 random_number = _random.random_number
 random_position = _random.random_position
 
-get_sprites = _game.get_sprites
+get_sprites = _sprite_manager.get_sprites
 
 def new_sprite(image, x=0, y=0, z=0, angle=0):
-    return _Sprite(_game, image, x, y, z, angle)
+    return _Sprite(_sprite_manager, image, x, y, z, angle)
 
 def new_text(text, x=0, y=0, z=0, angle=0, font=None, font_size=50, color='black'):
-    return _Text(_game, text, x, y, z, angle, font, font_size, color)
+    return _Text(_sprite_manager, text, x, y, z, angle, font, font_size, color)
 
 def new_rect(color='black', x=0, y=0, z=0, angle=0, width=100, height=200, border_color='light blue', border_width=0):
-    return _Rect(_game, color, x, y, z, angle, width, height, border_color, border_width)
+    return _Rect(_sprite_manager, color, x, y, z, angle, width, height, border_color, border_width)
 
 def new_circle(color='black', x=0, y=0, z=0, angle=0, radius=100, border_color='light blue', border_width=0):
-    return _Circle(_game, color, x, y, z, angle, radius, border_color, border_width)
+    return _Circle(_sprite_manager, color, x, y, z, angle, radius, border_color, border_width)
 
 def new_sound(sound):
     return _Sound(sound)

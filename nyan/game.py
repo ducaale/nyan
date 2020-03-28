@@ -1,50 +1,21 @@
 import sys
-from collections import defaultdict
 
 import pygame
 
 from .utils import make_async
 
 class Game():
-    def __init__(self, task_runner, screen, mouse, keyboard, custom_event):
+    def __init__(self, task_runner, sprite_manager, screen, mouse, keyboard, custom_event):
         self.task_runner = task_runner
+        self.sprite_manager = sprite_manager
         self.screen = screen
         self.mouse = mouse
         self.keyboard = keyboard
         self.custom_event = custom_event
 
-        self.all_sprites = []
-        self.sprite_groups = defaultdict(set)
         self.when_program_starts_callbacks = []
         self.forever_callbacks = []
         self.clock = pygame.time.Clock()
-
-    def get_sprites(self, *tags):
-        if len(tags) == 0:
-            return self.all_sprites
-        elif len(tags) == 1:
-            return self.sprite_groups[tags[0]]
-        else:
-            sprites = set()
-            for tag in tags:
-                sprites |= self.sprite_groups[tag]
-            return sprites
-
-    def add_sprite_to_group(self, sprite, group):
-        self.sprite_groups[group].add(sprite)
-
-    def remove_sprite_from_group(self, sprite, group):
-        self.sprite_groups[group].remove(sprite)
-
-    def register_sprite(self, sprite):
-        self.all_sprites.append(sprite)
-        for tag in sprite._tags:
-            self.add_sprite_to_group(sprite, tag)
-
-    def unregister_sprite(self, sprite):
-        self.all_sprites.remove(sprite)
-        for tag in sprite._tags:
-            self.remove_sprite_from_group(sprite, tag)
 
     def register_when_program_starts_callbacks(self, func):
         self.when_program_starts_callbacks.append(make_async(func))
@@ -55,7 +26,7 @@ class Game():
     def invoke_when_program_starts_callbacks(self):
         for callback in self.when_program_starts_callbacks:
             if hasattr(callback, 'tags'):
-                for sprite in self.get_sprites(*callback.tags):
+                for sprite in self.sprite_manager.get_sprites(*callback.tags):
                     self.task_runner.run(callback, sprite)
             else:
                 self.task_runner.run(callback)
@@ -63,7 +34,7 @@ class Game():
     def invoke_forever_callbacks(self):
         for callback in self.forever_callbacks:
             if hasattr(callback, 'tags'):
-                for sprite in self.get_sprites(*callback.tags):
+                for sprite in self.sprite_manager.get_sprites(*callback.tags):
                     self.task_runner.run(callback, sprite)
             else:
                 self.task_runner.run(callback)
@@ -94,8 +65,7 @@ class Game():
 
     def draw(self):
         self.screen._surface.fill((128, 128, 128))
-        self.all_sprites = sorted(self.all_sprites, key=lambda sprite: sprite.z)
-        for sprite in self.all_sprites: sprite._draw(self.screen)
+        self.sprite_manager.draw(self.screen)
         pygame.display.flip()
 
     def run(self):
