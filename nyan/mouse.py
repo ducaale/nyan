@@ -1,3 +1,5 @@
+import math
+
 from .utils import point_touching_sprite, make_async
 
 class Mouse():
