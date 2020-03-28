@@ -8,21 +8,24 @@ class Mouse():
         self.y = 0
         self.is_clicked = False
         self.is_click_relased = False
+        self._is_clicked_this_frame = False
         self._when_clicked_callbacks = []
         self._when_click_released_callbacks = []
 
     def _register_click_event(self):
         self.is_clicked = True
+        self._is_clicked_this_frame = True
 
     def _register_click_release_event(self):
         self.is_clicked = False
         self.is_click_relased = True
-    
-    def _clear_release_events(self):
+
+    def _clear_frame_events(self):
         self.is_click_relased = False
+        self._is_clicked_this_frame = False
 
     def _invoke_callbacks(self, task_runner):
-        if self.is_clicked:
+        if self._is_clicked_this_frame:
             for callback in self._when_clicked_callbacks:
                 task_runner.run(callback)
 

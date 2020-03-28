@@ -40,8 +40,8 @@ class Game():
                 self.task_runner.run(callback)
 
     def handle_events(self):
-        self.mouse._clear_release_events()
-        self.keyboard.clear_release_events()
+        self.mouse._clear_frame_events()
+        self.keyboard.clear_frame_events()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
