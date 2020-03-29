@@ -123,11 +123,11 @@ class Drawable2D(ABC):
 
     @property
     def is_shown(self):
-        return not self._is_hidden
+        return not self.is_hidden
 
     @is_shown.setter
     def is_shown(self, show):
-        self._is_hidden = not show
+        self.is_hidden = not show
 
     def is_touching(self, sprite_or_point):
         if isinstance(sprite_or_point, Drawable2D):
@@ -141,7 +141,7 @@ class Drawable2D(ABC):
             x, y = x.x, x.y
         except AttributeError:
             x, y = x, y
-        self._angle = math.degrees(math.atan2(y - self.y, x - self.x))
+        self.angle = math.degrees(math.atan2(y - self.y, x - self.x))
 
     def go_to(self, x, y=None):
         try:
