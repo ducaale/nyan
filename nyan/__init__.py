@@ -50,8 +50,8 @@ random_position = _random.random_position
 
 get_sprites = _sprite_manager.get_sprites
 
-def new_sprite(image, x=0, y=0, z=0, angle=0):
-    return _Sprite(_sprite_manager, image, x, y, z, angle)
+def new_sprite(image, x=0, y=0, z=0, angle=0, size=100):
+    return _Sprite(_sprite_manager, image, x, y, z, angle, size)
 
 def new_text(text, x=0, y=0, z=0, angle=0, font=None, font_size=50, color='black'):
     return _Text(_sprite_manager, text, x, y, z, angle, font, font_size, color)

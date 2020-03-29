@@ -7,14 +7,14 @@ import pygame
 from .utils import clamp, sprite_touching_sprite, point_touching_sprite, make_async
 
 class Drawable2D(ABC):
-    def __init__(self, game, x, y, z, angle):
+    def __init__(self, game, x, y, z, angle, size):
         self._game = game
         self.x = x
         self.y = y
         self.z = z
         self._angle = angle
 
-        self._size = 100
+        self._size = size
         self._transparency = 100
         self._brightness = 0
 

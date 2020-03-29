@@ -11,7 +11,7 @@ class Text(Drawable2D):
         self._font = font
         self._font_size = font_size
         self._color = color
-        super().__init__(game, x, y, z, angle)
+        super().__init__(game, x, y, z, angle, 100)
 
     def _compute_primary_surface(self):
         font = self._font and os.path.join('assets', self._font)

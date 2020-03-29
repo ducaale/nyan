@@ -5,9 +5,9 @@ import pygame
 from .drawable_2d import Drawable2D
 
 class Sprite(Drawable2D):
-    def __init__(self, game, image, x, y, z, angle):
+    def __init__(self, game, image, x, y, z, angle, size):
         self._image = image
-        super().__init__(game, x, y, z, angle)
+        super().__init__(game, x, y, z, angle, size)
 
     def _compute_primary_surface(self):
         return pygame.image.load(os.path.join('assets', self._image)).convert_alpha()

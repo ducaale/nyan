@@ -12,7 +12,7 @@ class Rect(Drawable2D):
         self._color = color
         self._border_color = border_color
         self._border_width = border_width
-        super().__init__(game, x, y, z, angle)
+        super().__init__(game, x, y, z, angle, 100)
 
     def _compute_primary_surface(self):
         surface = pygame.Surface((self._width, self._height), pygame.SRCALPHA)
