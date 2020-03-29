@@ -58,36 +58,41 @@ def _position_sprite(sprite, top, bottom, right, left):
     return sprite
 
 def new_sprite(
-    image, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0, size=100
+    image, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0,
+    size=100, is_hidden=False
 ):
     sprite = _Sprite(_sprite_manager, image, x, y, z, angle, size)
     _position_sprite(sprite, top, bottom, right, left)
+    sprite.is_hidden = is_hidden
     return sprite
 
 def new_text(
     text, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0,
-    font=None, font_size=50, color='black'
+    font=None, font_size=50, color='black', is_hidden=False
 ):
     text = _Text(_sprite_manager, text, x, y, z, angle, font, font_size, color)
     _position_sprite(text, top, bottom, right, left)
+    text.is_hidden = is_hidden
     return text
 
 def new_rect(
     color='black', x=0, y=0, z=0, top=None, bottom=None, right=None, left=None,
-    angle=0, width=100, height=200, border_color='light blue', border_width=0
+    angle=0, width=100, height=200, border_color='light blue', border_width=0, is_hidden=False
 ):
     rect = _Rect(
         _sprite_manager, color, x, y, z, angle, width, height, border_color, border_width
     )
     _position_sprite(rect, top, bottom, right, left)
+    rect.is_hidden = is_hidden
     return rect
 
 def new_circle(
     color='black', x=0, y=0, z=0, top=None, bottom=None, right=None, left=None,
-    angle=0, radius=100, border_color='light blue', border_width=0
+    angle=0, radius=100, border_color='light blue', border_width=0, is_hidden=False
 ):
     circle = _Circle(_sprite_manager, color, x, y, z, angle, radius, border_color, border_width)
     _position_sprite(circle, top, bottom, right, left)
+    circle.is_hidden = is_hidden
     return circle
 
 def new_sound(sound):
