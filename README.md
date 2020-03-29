@@ -11,7 +11,7 @@ sprites at once. This will be particularly useful for forever loops that should 
 for each sprite
 - [ ] maybe a camera should be implemented? should be useful for things like screen shake.
 - [ ] add scratch effects such as fisheye, whirl, pixlate, etc
-- [ ] add music support (start, stop, fade, volume, etc).
+- [x] add music support (play, stop, pause, volume, etc).
 - [ ] add support for generating tones. A good example is pygame zero's [tone generator](https://pygame-zero.readthedocs.io/en/stable/builtins.html#tone-generator)
 - [ ] add spaceship and flappy bird example
 - [x] add custom events
