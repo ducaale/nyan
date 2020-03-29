@@ -174,41 +174,47 @@ class Drawable2D(ABC):
     def height(self):
         return self._secondary_surface.get_height()
 
+    def _surface_width(self):
+        return self._secondary_surface.get_width()
+
+    def _surface_height(self):
+        return self._secondary_surface.get_height()
+
     @property
     def right(self):
-        return self.x + self.width / 2
+        return self.x + self._surface_width() / 2
 
     @right.setter
     def right(self, x):
-        self.x = x - self.width / 2
+        self.x = x - self._surface_width() / 2
 
     @property
     def left(self):
-        return self.x - self.width / 2
+        return self.x - self._surface_width() / 2
 
     @left.setter
     def left(self, x):
-        self.x = x + self.width / 2
+        self.x = x + self._surface_width() / 2
 
     @property
     def top(self):
-        return self.y + self.height / 2
+        return self.y + self._surface_height() / 2
 
     @top.setter
     def top(self, y):
-        self.y = y - self.height / 2
+        self.y = y - self._surface_height() / 2
 
     @property
     def bottom(self):
-        return self.y - self.height / 2
+        return self.y - self._surface_height() / 2
 
     @bottom.setter
     def bottom(self, y):
-        self.y = y + self.height / 2
+        self.y = y + self._surface_height() / 2
 
     # replace screen with camera object
     def _draw(self, screen):
         if self.is_hidden: return
-        x = self.x + (screen.width/2) - (self.width/2)
-        y = (screen.height/2) - self.y - (self.height/2)
+        x = self.x + (screen.width/2) - (self._surface_width()/2)
+        y = (screen.height/2) - self.y - (self._surface_height()/2)
         screen._surface.blit(self._secondary_surface, (x, y))

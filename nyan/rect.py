@@ -32,6 +32,26 @@ class Rect(Drawable2D):
             surface.fill(color_name_to_rgb(self._color))
         return surface
 
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter
+    def width(self, width):
+        self._width = width
+        self._primary_surface = self._compute_primary_surface()
+        self._secondary_surface = self._compute_secondary_surface()
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self, height):
+        self._height = height
+        self._primary_surface = self._compute_primary_surface()
+        self._secondary_surface = self._compute_secondary_surface()
+
     @property 
     def color(self):
         return self._color
