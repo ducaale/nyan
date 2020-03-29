@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nyan"
 version = "0.1.1"
-description = ""
+description = "The easiest way to transition from Scratch to Python"
 authors = ["ducaale <sharaf.13@hotmail.com>"]
 include = ["nyan_packager.py"]
 
