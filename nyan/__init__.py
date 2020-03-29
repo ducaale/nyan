@@ -50,17 +50,45 @@ random_position = _random.random_position
 
 get_sprites = _sprite_manager.get_sprites
 
-def new_sprite(image, x=0, y=0, z=0, angle=0, size=100):
-    return _Sprite(_sprite_manager, image, x, y, z, angle, size)
+def _position_sprite(sprite, top, bottom, right, left):
+    if top is not None: sprite.top = top
+    if bottom is not None: sprite.bottom = bottom
+    if left is not None: sprite.left = left
+    if right is not None: sprite.right = right
+    return sprite
 
-def new_text(text, x=0, y=0, z=0, angle=0, font=None, font_size=50, color='black'):
-    return _Text(_sprite_manager, text, x, y, z, angle, font, font_size, color)
+def new_sprite(
+    image, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0, size=100
+):
+    sprite = _Sprite(_sprite_manager, image, x, y, z, angle, size)
+    _position_sprite(sprite, top, bottom, right, left)
+    return sprite
 
-def new_rect(color='black', x=0, y=0, z=0, angle=0, width=100, height=200, border_color='light blue', border_width=0):
-    return _Rect(_sprite_manager, color, x, y, z, angle, width, height, border_color, border_width)
+def new_text(
+    text, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0,
+    font=None, font_size=50, color='black'
+):
+    text = _Text(_sprite_manager, text, x, y, z, angle, font, font_size, color)
+    _position_sprite(text, top, bottom, right, left)
+    return text
 
-def new_circle(color='black', x=0, y=0, z=0, angle=0, radius=100, border_color='light blue', border_width=0):
-    return _Circle(_sprite_manager, color, x, y, z, angle, radius, border_color, border_width)
+def new_rect(
+    color='black', x=0, y=0, z=0, top=None, bottom=None, right=None, left=None,
+    angle=0, width=100, height=200, border_color='light blue', border_width=0
+):
+    rect = _Rect(
+        _sprite_manager, color, x, y, z, angle, width, height, border_color, border_width
+    )
+    _position_sprite(rect, top, bottom, right, left)
+    return rect
+
+def new_circle(
+    color='black', x=0, y=0, z=0, top=None, bottom=None, right=None, left=None,
+    angle=0, radius=100, border_color='light blue', border_width=0
+):
+    circle = _Circle(_sprite_manager, color, x, y, z, angle, radius, border_color, border_width)
+    _position_sprite(circle, top, bottom, right, left)
+    return circle
 
 def new_sound(sound):
     return _Sound(sound)
