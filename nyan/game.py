@@ -26,7 +26,7 @@ class Game():
     def invoke_when_program_starts_callbacks(self):
         for callback in self.when_program_starts_callbacks:
             if hasattr(callback, 'tags'):
-                for sprite in self.sprite_manager.get_sprites(*callback.tags):
+                for sprite in self.sprite_manager.get_sprites(callback.tags):
                     self.task_runner.run(callback, sprite)
             else:
                 self.task_runner.run(callback)
@@ -34,7 +34,7 @@ class Game():
     def invoke_forever_callbacks(self):
         for callback in self.forever_callbacks:
             if hasattr(callback, 'tags'):
-                for sprite in self.sprite_manager.get_sprites(*callback.tags):
+                for sprite in self.sprite_manager.get_sprites(callback.tags):
                     self.task_runner.run(callback, sprite)
             else:
                 self.task_runner.run(callback)
