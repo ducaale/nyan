@@ -12,8 +12,7 @@ for each sprite
 - [ ] maybe a camera should be implemented? should be useful for things like screen shake.
 - [ ] add scratch effects such as fisheye, whirl, pixlate, etc
 - [x] add music support (play, stop, pause, volume, etc).
-- [ ] add support for generating tones. A good example is pygame zero's [tone generator](https://pygame-zero.readthedocs.io/en/stable/builtins.html#tone-generator)
-- [ ] add spaceship and flappy bird example
+- [x] add flappy bird example
 - [x] add custom events
 - [x] add nyan_packager
 - [x] add option to pass icon in nyan_packager
@@ -23,3 +22,4 @@ for each sprite
 - [ ] `@nyan.gamestate()` decorator for running script in a particular state
 - [ ] global object for storing data https://stackoverflow.com/questions/4984647/accessing-dict-keys-like-an-attribute
 - [x] add scratch like timer that can be resetted
+- [ ] add support for changing backdrop
