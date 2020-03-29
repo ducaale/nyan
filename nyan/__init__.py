@@ -11,6 +11,7 @@ from .mouse import Mouse as _Mouse
 from .keyboard import Keyboard as _Keyboard
 from .custom_event import CustomEvent as _CustomEvent
 from .sound import Sound as _Sound
+from .music import Music as _Music
 from .task_runner import TaskRunner as _TaskRunner
 from .sprite import Sprite as _Sprite
 from .text import Text as _Text
@@ -28,6 +29,7 @@ _keyboard = _Keyboard()
 _custom_event = _CustomEvent()
 _random = _Random(screen)
 _sprite_manager = _SpriteManager()
+music = _Music()
 _game = _Game(_task_runner, _sprite_manager, screen, mouse, _keyboard, _custom_event)
 
 when_mouse_clicked = mouse.when_clicked
