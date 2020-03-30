@@ -138,7 +138,7 @@ when multiple tags are passed. for example, will this function
 `@foreach_sprite_with_tag('player', 'bullet')` return sprites that has
 both tags or one of them?
 """
-def foreach_sprite(tags=[]):
+def foreach_sprite(tag=None, tags=[]):
     """
     Calls the given function for each sprite that has any of the passed tags.
     To be used in conjunction with `@repeat_forever` and `@when_program_starts`
@@ -151,7 +151,10 @@ def foreach_sprite(tags=[]):
     ```
     """
     def decorator(func):
-        func.tags = tags
+        if tag is not None:
+            func.tags = [tag]
+        else:
+            func.tags = tags
         return func
     return decorator
 
