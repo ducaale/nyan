@@ -3,6 +3,11 @@
 This is a WIP fork of [replit-play](https://github.com/replit/play) focused on achieving feature parity
 with Scratch.
 
+## Installation
+To install nyan, run the following in your terminal
+```
+pip install nyan
+```
 
 ## Todos
 
