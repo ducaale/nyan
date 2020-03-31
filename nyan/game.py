@@ -2,6 +2,7 @@ import sys
 
 import pygame
 
+from .color import color_name_to_rgb
 from .utils import make_async
 
 class Game():
@@ -13,9 +14,14 @@ class Game():
         self.keyboard = keyboard
         self.custom_event = custom_event
 
+        self.backdrop = color_name_to_rgb("white")
+
         self.when_program_starts_callbacks = []
         self.forever_callbacks = []
         self.clock = pygame.time.Clock()
+
+    def set_backdrop(self, color):
+        self.backdrop = color_name_to_rgb(color)
 
     def register_when_program_starts_callbacks(self, func):
         self.when_program_starts_callbacks.append(make_async(func))
@@ -65,7 +71,7 @@ class Game():
         self.invoke_forever_callbacks()
 
     def draw(self):
-        self.screen._surface.fill((128, 128, 128))
+        self.screen._surface.fill(color_name_to_rgb(self.backdrop))
         self.sprite_manager.draw(self.screen)
         pygame.display.flip()
 

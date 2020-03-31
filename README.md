@@ -27,4 +27,4 @@ for each sprite
 - [ ] `@nyan.gamestate()` decorator for running script in a particular state
 - [ ] global object for storing data https://stackoverflow.com/questions/4984647/accessing-dict-keys-like-an-attribute
 - [x] add scratch like timer that can be resetted
-- [ ] add support for changing backdrop
+- [x] add support for changing backdrop

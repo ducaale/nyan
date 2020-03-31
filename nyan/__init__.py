@@ -50,6 +50,8 @@ random_position = _random.random_position
 
 get_sprites = _sprite_manager.get_sprites
 
+set_backdrop = _game.set_backdrop
+
 def _position_sprite(sprite, top, bottom, right, left):
     if top is not None: sprite.top = top
     if bottom is not None: sprite.bottom = bottom
