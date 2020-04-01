@@ -70,9 +70,9 @@ The rest of this document is divided into the following sections:
 
 To get images or text on the screen, use the following commands. (Copy and paste the code below to try it out.)
 
-#### `nyan.new_rect()`
+#### `nyan.new_rectangle()`
 ```python
-box = nyan.new_rect(
+box = nyan.new_rectangle(
         color='black',
         x=0,
         y=0,
@@ -87,9 +87,9 @@ This will put a tall, black Rectangle in the middle of the screen.
 
 If you want to change where the image is on the screen, try changing `x=0` (horizontal position) and `y=0` (vertical position). Just like Scratch, the middle of the screen is x=0, y=0. Increasing x moves the image right and decreasing x moves the image left. Likeswise, increasing y moves the image up and decreasing y moves the image down. You can also change the color by changing `'black'` to another color name, like `'orange'`.
 
-#### `nyan.new_sprite()`
+#### `nyan.new_image()`
 ```python
-character = nyan.new_sprite(
+character = nyan.new_image(
         image='character.png', 
         x=0, 
         y=0, 
@@ -143,7 +143,7 @@ There are [lots of named colors to choose from](https://upload.wikimedia.org/wik
 nyan.set_backdrop((255, 255, 255))
 ```
 
-Anywhere you can set a color in nyan, you can do it using a named color like `'red'` or an RGB value above like `(255, 255, 255)` or even an RGBA value like `(0, 0, 0, 127)` (the fourth number is transparency from 0 to 255).
+Anywhere you can set a color in Nyan, you can do it using a named color like `'red'` or an RGB value above like `(255, 255, 255)` or even an RGBA value like `(0, 0, 0, 127)` (the fourth number is transparency from 0 to 255).
 
 ## Animation and Control Commands
 
@@ -207,7 +207,6 @@ Sprites (images and text) have a few simple commands:
 - **`sprite.clone()`** — Makes a copy or clone of the sprite and returns it.
 - **`sprite.remove()`** — Removes a sprite from the screen permanently. Calling sprite commands on a removed sprite won't do anything.
 
-
 #### Properties
 
 Sprites also have properties that can be changed to change how the sprite looks. Here they are:
@@ -217,6 +216,7 @@ Sprites also have properties that can be changed to change how the sprite looks.
 - **`sprite.size`** — How big the sprite is. The default is 100, but it can be made bigger or smaller.
 - **`sprite.angle`** — How much the sprite is turned. Positive numbers are counter-clockwise. The default is 0 degrees (pointed to the right).
 - **`sprite.transparency`** — How see-through the sprite is from 0 to 100. 0 is completely see-through, 100 is not see-through at all. The default is 100.
+- **`sprite.brighness`** - How bright or dim the sprite is from -100 to 100. -100 is completely dark, 100 is white. The default is 0.
 - **`sprite.is_hidden`** — `True` if the sprite has been hidden with the `sprite.hide()` command. Otherwise `False`.
 - **`sprite.is_shown`** — `True` if the sprite has not been hidden with the `sprite.hide()` command. Otherwise `False`.
 - **`sprite.left`** — The x position of the left-most part of the sprite.
@@ -224,14 +224,13 @@ Sprites also have properties that can be changed to change how the sprite looks.
 - **`sprite.top`** — The y position of the top-most part of the sprite.
 - **`sprite.bottom`** — The y position of the bottom-most part of the sprite.
 
-
 Image-sprite-only properties:
 
-- **`sprite.image`** — The filename of the image shown. If `None` is provided initially, a blank image will show up.
+- **`sprite.image`** — The filename of the image shown.
 
 Text-sprite-only properties:
 
-- **`text.words`** — The displayed text content. The default is `'hi :)'`.
+- **`text.text`** — The displayed text content.
 - **`text.font`** — The filename of the font e.g. 'Arial.ttf'. The default is `None`, which will use a built-in font.
 - **`text.font_size`** — The text's size. The default is `50` (pt).
 - **`text.color`** — The text's color. The default is black.
@@ -259,7 +258,6 @@ These properties can changed to do the same things as the sprite commands above.
 sprite.go_to(other_sprite)
 
 # the line above is the same as the two lines below
-
 sprite.x = other_sprite.x
 sprite.y = other_sprite.y
 ```
@@ -286,10 +284,9 @@ Sprites also have some other useful info:
 - **`sprite.is_touching(other_sprite)`** — Returns True if `sprite` is touching the `other_sprite`. Otherwise `False`.
 - **`sprite.is_touching(point)`** — Returns True if the sprite is touching the point (anything with an `x` and `y` coordinate). For example: `sprite.is_touching(nyan.mouse)`
 
-
 ## Mouse Commands
 
-Working with the mouse in nyan is easy. Here's a simple program that points a sprite at the mouse:
+Working with the mouse in Nyan is easy. Here's a simple program that points a sprite at the mouse:
 
 ```python
 arrow = nyan.new_text('-->', font_size=100)
@@ -305,8 +302,6 @@ def do():
 - **`nyan.mouse.y`** — The vertical y position of the mouse.
 - **`nyan.mouse.is_clicked`** — `True` if the mouse is clicked down, or `False` if it's not.
 - **`nyan.mouse.is_touching(sprite)`** — Returns `True` if the mouse is touching a sprite, or `False` if it's not.
-
-
 
 #### `@sprite.when_clicked`
 
@@ -324,7 +319,6 @@ async def do():
     face.words = '^.^'
 ```
 
-
 #### `@nyan.mouse.when_clicked` or `@nyan.when_mouse_clicked`
 
 To run code when the mouse is clicked anywhere, use `@nyan.mouse.when_clicked` or `@nyan.when_mouse_clicked` (they do the same exact thing).
@@ -340,9 +334,9 @@ def do():
     text.go_to(nyan.mouse)
 ```
 
-#### `@nyan.mouse.when_click_released` or `@nyan.when_click_released`
+#### `@nyan.mouse.when_click_released` or `@nyan.when_mouse_click_released`
 
-To run code when the mouse button is released, use `@nyan.mouse.when_click_released` `@nyan.when_click_released` (they do the same exact thing).
+To run code when the mouse button is released, use `@nyan.mouse.when_click_released` `@nyan.when_mouse_click_released` (they do the same exact thing).
 
 In the code below, the cat can be dragged around when it's clicked by the mouse:
 
@@ -364,9 +358,7 @@ def do():
         cat.go_to(nyan.mouse)
 ```
 
-
 ## Keyboard Commands
-
 
 #### `nyan.key_is_pressed()`
 
@@ -464,11 +456,9 @@ The way to get information about the screen. `nyan.screen` has these properties:
 - `nyan.screen.top` - The `y` coordinate for the top of the screen.
 - `nyan.screen.bottom` - The `y` coordinate for the bottom of the screen.
 
+#### `nyan.get_sprites()`
 
-#### `nyan.all_sprites`
-
-A list of all the sprites (images, shapes, text) in the program.
-
+Returns a list of all the sprites (images, shapes, text) in the program.
 
 #### `nyan.random_number()`
 
@@ -491,7 +481,6 @@ nyan.random_number(0, 1.0)
 ```
 
 `nyan.random_number()` is also inclusive, which means `nyan.random_number(0,1)` will return `0` and `1`.
-
 
 #### `nyan.random_color()`
 
