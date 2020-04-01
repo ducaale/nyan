@@ -59,7 +59,7 @@ def _position_sprite(sprite, top, bottom, right, left):
     if right is not None: sprite.right = right
     return sprite
 
-def new_sprite(
+def new_image(
     image, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0,
     size=100, is_hidden=False
 ):
