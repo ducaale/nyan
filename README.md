@@ -1,6 +1,6 @@
-# nyan
+# Nyan
 
-nyan - a fork of [Python Play](https://github.com/replit/play) - is an open-source code library for the Python programming language that makes it as easy as possible to start making games. Here's the code to make a simple game using nyan:
+Nyan - a fork of [Python Play](https://github.com/replit/play) - is an open-source code library for the Python programming language that makes it as easy as possible to start making games. Here's the code to make a simple game using Nyan:
 
 ```python
 import nyan
@@ -33,17 +33,17 @@ The code above makes a game where you have to click the cat to win:
 
 ![Clicking a cat game](example.gif)
 
-nyan is an excellent choice for beginner programmers to get started with graphics programming. It was designed to have similar commands and simplicity to [MIT's Scratch](https://scratch.mit.edu) and is distinguished from such projects as Pygame, Arcade, or Pygame Zero because of its lack of boiler plate code, its easy-to-understand plain-english commands, and intuitive API.
+Nyan is an excellent choice for beginner programmers to get started with graphics programming. It was designed to have similar commands and simplicity to [MIT's Scratch](https://scratch.mit.edu) and is distinguished from such projects as Pygame, Arcade, or Pygame Zero because of its lack of boiler plate code, its easy-to-understand plain-english commands, and intuitive API.
 
-# How to install nyan
+# How to install Nyan
 
 Run the following command in your terminal:
 
     pip install nyan
 
-# How to use nyan
+# How to use Nyan
 
-All nyan programs start with `import nyan` and end with `nyan.start_program()`, like this:
+All Nyan programs start with `import nyan` and end with `nyan.start_program()`, like this:
 
 ```python
 import nyan # this is the first line in the program
@@ -70,9 +70,9 @@ The rest of this document is divided into the following sections:
 
 To get images or text on the screen, use the following commands. (Copy and paste the code below to try it out.)
 
-#### `nyan.new_box()`
+#### `nyan.new_rect()`
 ```python
-box = nyan.new_box(
+box = nyan.new_rect(
         color='black',
         x=0,
         y=0,
@@ -83,46 +83,37 @@ box = nyan.new_box(
     )
 ```
 
-This will put a tall, black box in the middle of the screen.
+This will put a tall, black Rectangle in the middle of the screen.
 
 If you want to change where the image is on the screen, try changing `x=0` (horizontal position) and `y=0` (vertical position). Just like Scratch, the middle of the screen is x=0, y=0. Increasing x moves the image right and decreasing x moves the image left. Likeswise, increasing y moves the image up and decreasing y moves the image down. You can also change the color by changing `'black'` to another color name, like `'orange'`.
 
-
-#### `nyan.new_image()`
+#### `nyan.new_sprite()`
 ```python
-character = nyan.new_image(
+character = nyan.new_sprite(
         image='character.png', 
         x=0, 
         y=0, 
-        angle=0, 
-        size=100, 
-        transparency=100
+        size=100
     )
 ```
 
-This will place an image in the middle of the screen. Make sure you have a file named `character.png` in your project files for the code above to work. You can find images online at sites like http://icons.iconarchive.com/icons/icojam/animals/64/01-bull-icon.png
-
-
+This will place an image in the middle of the screen. Make sure you have a file named `character.png` in a folder named `assets` inside your project for the code above to work. You can find images online at sites like http://icons.iconarchive.com/icons/icojam/animals/64/01-bull-icon.png, or you can make your own using an online sprite editor like this one https://www.piskelapp.com/.
 
 #### `nyan.new_text()`
 ```python
 greeting = nyan.new_text(
-        words='hi there', 
+        text='hi there', 
         x=0, 
         y=0, 
-        angle=0, 
         font=None, 
         font_size=50, 
-        color='black', 
-        transparency=100
+        color='black'
     )
 ```
 
 This will put some text on the screen.
 
-If you want to change the font, you'll need a font file (usually named something like `Arial.ttf`) in your project files. Then you can change `font=None` to `font='Arial.ttf'`. You can find font files at sites like [DaFont](https://www.dafont.com).
-
-
+If you want to change the font, you'll need a font file (usually named something like `Arial.ttf`) in your assets folder. Then you can change `font=None` to `font='Arial.ttf'`. You can find font files at sites like [DaFont](https://www.dafont.com).
 
 #### `nyan.new_circle()`
 ```python
@@ -132,13 +123,11 @@ ball = nyan.new_circle(
         y=0, 
         radius=100, 
         border_color="light blue", 
-        border_width=10, 
-        transparency=100
+        border_width=10
     )
 ```
 
 This will put a black circle in the middle of the screen.
-
 
 #### `nyan.set_backdrop()`
 You can change the background color with the `nyan.set_backdrop()` command:
@@ -151,11 +140,10 @@ There are [lots of named colors to choose from](https://upload.wikimedia.org/wik
 
 ```python
 # Sets the background to white. Each number can go from 0 to 255
-nyan.set_backdrop( (255, 255, 255) )
+nyan.set_backdrop((255, 255, 255))
 ```
 
-Anywhere you can set a color in nyan, you can do it using a named color like `'red'` or an RGB value above like `(255, 255, 255)` or even an RGBA value like `(0, 0, 0, 127)` (the fourth number is transparency from 0 to 255). You can get the current background color with `nyan.backdrop`.
-
+Anywhere you can set a color in nyan, you can do it using a named color like `'red'` or an RGB value above like `(255, 255, 255)` or even an RGBA value like `(0, 0, 0, 127)` (the fourth number is transparency from 0 to 255).
 
 ## Animation and Control Commands
 
@@ -167,7 +155,6 @@ cat = nyan.new_text('=^.^=')
 
 @nyan.repeat_forever
 def do():
-
     cat.turn(10)  
 ```    
 
@@ -182,12 +169,10 @@ cat = nyan.new_text('=^.^=')
 
 @nyan.when_program_starts
 def do():
-
     cat.turn(180)  
 ```
 
 This will make the cat turn upside down instantly when the program starts.
-
 
 #### `await nyan.sleep(seconds=1)`
 
@@ -198,7 +183,6 @@ cat = nyan.new_text('=^.^=')
 
 @nyan.when_program_starts
 async def do():
-
     cat.turn(180)  
     await nyan.sleep(seconds=2)
     cat.turn(180)  
@@ -206,9 +190,7 @@ async def do():
 
 This will make the cat turn upside down instantly when the program starts, wait 2 seconds, then turn back up again.
 
-
 ## Sprite Commands
-
 
 #### Simple commands
 
