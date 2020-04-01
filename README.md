@@ -446,14 +446,20 @@ def do(key):
 
 ## Audio Commands
 
-#### `@nyan.new_sound('meow.wav')`
-#### `@sound.play()`
+#### `nyan.new_sound('meow.wav')`
+```
+meow = play.new_sound(sound='meow.wav')
+```
+This will load a sound file and makes it ready to be played. Make sure you have a file named `meow.wav` in a folder named `assets` inside your project for the code above to work.
 
-#### `@nyan.music.play()`
-#### `@nyan.music.play_until_done()`
-#### `@nyan.music.pause()`
-#### `@nyan.music.unpause()`
-#### `@nyan.music.volume`
+#### `meow.play()`
+This will play the sound.
+
+#### `nyan.music.play('William Tell Overture Finale.mp3')`
+#### `await nyan.music.play_until_done('William Tell Overture Finale.mp3')`
+#### `nyan.music.pause()`
+#### `nyan.music.unpause()`
+#### `nyan.music.volume`
 
 ## Other Useful Commands
 
