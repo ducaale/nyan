@@ -1,11 +1,6 @@
 # nyan
 
-This is a WIP fork of [replit-play](https://github.com/replit/play) focused on achieving feature parity
-with Scratch.
-
----
-
-Python Play is an open-source code library for the Python programming language that makes it as easy as possible to start making games. Here's the code to make a simple game using Play:
+nyan is an open-source code library for the Python programming language that makes it as easy as possible to start making games. Here's the code to make a simple game using Play:
 
 ```python
 import play
@@ -152,25 +147,6 @@ ball = play.new_circle(
 This will put a black circle in the middle of the screen.
 
 
-
-#### `play.new_line()`
-```python
-line = play.new_line(
-        color='black', 
-        x=0, 
-        y=0, 
-        length=100, 
-        angle=0, 
-        thickness=1, 
-        x1=None, 
-        y1=None
-    )
-```
-
-This will create a thin line on the screen.
-
-
-
 #### `play.set_backdrop()`
 You can change the background color with the `play.set_backdrop()` command:
 
@@ -240,35 +216,6 @@ async def do():
 This will make the cat turn upside down instantly when the program starts, wait 2 seconds, then turn back up again.
 
 
-#### `play.repeat()` and `await play.animate()`
-
-To smoothly animate a character a certain number of times, you can use `play.repeat()` with `await play.animate()`, like this:
-
-
-```python
-cat = play.new_text('=^.^=')
-
-@play.when_program_starts
-async def do():
-    for count in play.repeat(180):
-        cat.turn(1)
-        await play.animate()
-```
-
-This code will animate the cat turning upside down smoothly when the program starts.
-
-To break down the code:
-- `for count in play.repeat(180):` runs the code 180 times.
-- `cat.turn(1)` turns that cat 1 degree each time.
-- `await play.animate()` makes the cat animate smoothly. Without this command, the cat would just turn upside down instantly.
-
-Note: to use `await play.animate()` and `await play.timer()`, the word `async` must be included before `def` in your function definition.
-
-
-
-
-
-
 ## Sprite Commands
 
 
@@ -333,18 +280,6 @@ Circle-sprite-only properties:
 
 If the circle has a border, the circle's total width, including the border, will be the width defined by the `radius` property.
 
-
-Line-sprite-only properties:
-- **`line.color`** — The line's color. The default is `black`.
-- **`line.length`** — How long the line is. Defaults to `100` (pixels).
-- **`line.angle`** — The angle the line points in. Defaults to `0` (degrees).
-- **`line.x1`** — The `x` coordinate of the end of the line.
-- **`line.y1`** — The `y` coordinate of the end of the line.
-
-For lines, the `x` and `y` coordinates are where the start of the line is. You can set either the `length` and `angle` or the `x1` and `y1` properties to change where the line points. If you update one, the others will be updated automatically.
-
-
-
 These properties can changed to do the same things as the sprite commands above. For example,
 
 ```python
@@ -367,9 +302,6 @@ def do():
     # the line above is the same as cat.turn(1)
 ```
 
-
-
-
 #### Other info
 
 Sprites also have some other useful info:
@@ -378,14 +310,8 @@ Sprites also have some other useful info:
 - **`sprite.height`** — Gets how tall the sprite is in pixels.
 - **`sprite.distance_to(other_sprite)`** — Gets the distance in pixels to `other_sprite`.
 - **`sprite.distance_to(x=100, y=100)`** — Gets the distance to the point x=100, y=100.
-- **`sprite.is_clicked`** — `True` if the sprite has just been clicked, otherwise `False`.
 - **`sprite.is_touching(other_sprite)`** — Returns True if `sprite` is touching the `other_sprite`. Otherwise `False`.
 - **`sprite.is_touching(point)`** — Returns True if the sprite is touching the point (anything with an `x` and `y` coordinate). For example: `sprite.is_touching(play.mouse)`
-
-
-
-
-
 
 
 ## Mouse Commands
@@ -426,27 +352,6 @@ async def do():
 ```
 
 
-
-
-#### `@play.when_sprite_clicked()`
-
-If you wanted to run the same code when multiple sprites are clicked, you can use `@play.when_sprite_clicked()`:
-
-```python
-face1 = play.new_text('^.^', x=-100, font_size=100)
-face2 = play.new_text('^_^', x=100, font_size=100)
-
-@play.when_sprite_clicked(face1, face2) # takes as many sprites as you want
-async def do(sprite):
-    starting_words = sprite.words
-    sprite.words = '*o*'
-    await play.timer(seconds=1)
-    sprite.words = starting_words
-```
-
-In the above program, clicking `face1` or `face2` will run the code for each sprite separately. Note that the function is defined with a parameter e.g. `def do(sprite):` instead of just `def do():`.
-
-
 #### `@play.mouse.when_clicked` or `@play.when_mouse_clicked`
 
 To run code when the mouse is clicked anywhere, use `@play.mouse.when_clicked` or `@play.when_mouse_clicked` (they do the same exact thing).
@@ -485,10 +390,6 @@ def do():
     if cat.is_being_dragged:
         cat.go_to(play.mouse)
 ```
-
-
-
-
 
 
 ## Keyboard Commands
@@ -532,9 +433,6 @@ def do(key):
     if key == 'space':
         cat.words = '=*_*='
 ```
-
-
-
 
 #### `@play.when_any_key_pressed`
 
