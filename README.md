@@ -33,8 +33,6 @@ The code above makes a game where you have to click the cat to win:
 
 ![Clicking a cat game](example.gif)
 
-**[You can try playing and changing this game on repl.it!](https://repl.it/@glench/Python-Play-sample-game)**
-
 nyan is an excellent choice for beginner programmers to get started with graphics programming. It was designed to have similar commands and simplicity to [MIT's Scratch](https://scratch.mit.edu) and is distinguished from such projects as Pygame, Arcade, or Pygame Zero because of its lack of boiler plate code, its easy-to-understand plain-english commands, and intuitive API. [Read more about its design at the bottom of this document](#why-use-python-nyan).
 
 # How to install nyan
@@ -42,8 +40,6 @@ nyan is an excellent choice for beginner programmers to get started with graphic
 Run the following command in your terminal:
 
     pip install nyan
-
-Or you can just go to [repl.it](https://repl.it/@glench/Python-Play-sample-game) and you won't have to install anything :)
 
 # How to use nyan
 
@@ -58,8 +54,6 @@ nyan.start_program() # this is the last line in the program
 ```
 
 All other commands go between those two commands.
-
-To try any of the following examples, go to **[repl.it and try pasting code in](https://repl.it/@glench/Replit-Play-Template)**.
 
 ## Commands
 
