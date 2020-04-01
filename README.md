@@ -41,7 +41,7 @@ nyan is an excellent choice for beginner programmers to get started with graphic
 
 Run the following command in your terminal:
 
-    pip install replit-nyan
+    pip install nyan
 
 Or you can just go to [repl.it](https://repl.it/@glench/Python-Play-sample-game) and you won't have to install anything :)
 
