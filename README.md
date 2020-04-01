@@ -64,15 +64,16 @@ The rest of this document is divided into the following sections:
 - [Sprite Commands](#sprite-commands) - Controlling sprites.
 - [Mouse Commands](#mouse-commands) - Detecting mouse actions (clicks, movement).
 - [Keyboard Commands](#keyboard-commands) - Detecting keyboard actions.
+- [Audio Commands](#audio-commands) - Playing sounds and music.
 - [Other Useful Commands](#other-useful-commands) - General commands.
 
 ## Basic Commands
 
 To get images or text on the screen, use the following commands. (Copy and paste the code below to try it out.)
 
-#### `nyan.new_rectangle()`
+#### `nyan.new_rect()`
 ```python
-box = nyan.new_rectangle(
+box = nyan.new_rect(
         color='black',
         x=0,
         y=0,
@@ -442,6 +443,17 @@ text = nyan.new_text('')
 def do(key):
     text.words = f'{key} key released!''
 ```
+
+## Audio Commands
+
+#### `@nyan.new_sound('meow.wav')`
+#### `@sound.play()`
+
+#### `@nyan.music.play()`
+#### `@nyan.music.play_until_done()`
+#### `@nyan.music.pause()`
+#### `@nyan.music.unpause()`
+#### `@nyan.music.volume`
 
 ## Other Useful Commands
 
