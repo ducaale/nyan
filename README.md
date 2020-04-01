@@ -1,6 +1,6 @@
 # nyan
 
-nyan is an open-source code library for the Python programming language that makes it as easy as possible to start making games. Here's the code to make a simple game using nyan:
+nyan - a fork of [Python Play](https://github.com/replit/play) - is an open-source code library for the Python programming language that makes it as easy as possible to start making games. Here's the code to make a simple game using nyan:
 
 ```python
 import nyan
@@ -33,7 +33,7 @@ The code above makes a game where you have to click the cat to win:
 
 ![Clicking a cat game](example.gif)
 
-nyan is an excellent choice for beginner programmers to get started with graphics programming. It was designed to have similar commands and simplicity to [MIT's Scratch](https://scratch.mit.edu) and is distinguished from such projects as Pygame, Arcade, or Pygame Zero because of its lack of boiler plate code, its easy-to-understand plain-english commands, and intuitive API. [Read more about its design at the bottom of this document](#why-use-python-nyan).
+nyan is an excellent choice for beginner programmers to get started with graphics programming. It was designed to have similar commands and simplicity to [MIT's Scratch](https://scratch.mit.edu) and is distinguished from such projects as Pygame, Arcade, or Pygame Zero because of its lack of boiler plate code, its easy-to-understand plain-english commands, and intuitive API.
 
 # How to install nyan
 
