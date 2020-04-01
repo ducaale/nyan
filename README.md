@@ -15,11 +15,11 @@ async def move_cat():
     
     cat.show()
 
-    await nyan.timer(seconds=0.4)
+    await nyan.sleep(seconds=0.4)
 
     cat.hide()
 
-    await nyan.timer(seconds=0.4)
+    await nyan.sleep(seconds=0.4)
 
 @cat.when_clicked
 def win_function():
@@ -71,7 +71,6 @@ The rest of this document is divided into the following sections:
 - [Mouse Commands](#mouse-commands) - Detecting mouse actions (clicks, movement).
 - [Keyboard Commands](#keyboard-commands) - Detecting keyboard actions.
 - [Other Useful Commands](#other-useful-commands) - General commands.
-- [Why use nyan?](#why-use-python-nyan) - How this library is different from other graphics libraries.
 
 ## Basic Commands
 
@@ -164,8 +163,6 @@ nyan.set_backdrop( (255, 255, 255) )
 Anywhere you can set a color in nyan, you can do it using a named color like `'red'` or an RGB value above like `(255, 255, 255)` or even an RGBA value like `(0, 0, 0, 127)` (the fourth number is transparency from 0 to 255). You can get the current background color with `nyan.backdrop`.
 
 
-
-
 ## Animation and Control Commands
 
 #### `@nyan.repeat_forever`
@@ -198,9 +195,9 @@ def do():
 This will make the cat turn upside down instantly when the program starts.
 
 
-#### `await nyan.timer(seconds=1)`
+#### `await nyan.sleep(seconds=1)`
 
-To run code after a waiting period, you can use the `await nyan.timer()` command like this:
+To run code after a waiting period, you can use the `await nyan.sleep()` command like this:
 
 ```python
 cat = nyan.new_text('=^.^=')
@@ -209,7 +206,7 @@ cat = nyan.new_text('=^.^=')
 async def do():
 
     cat.turn(180)  
-    await nyan.timer(seconds=2)
+    await nyan.sleep(seconds=2)
     cat.turn(180)  
 ```
 
@@ -347,7 +344,7 @@ face = nyan.new_text('^.^', font_size=100)
 @face.when_clicked
 async def do():
     face.words = '*o*'
-    await nyan.timer(seconds=1)
+    await nyan.sleep(seconds=1)
     face.words = '^.^'
 ```
 
@@ -460,7 +457,7 @@ text = nyan.new_text('')
 @nyan.when_key_released('up')
 async def do(key):
     text.words = 'up arrow released!'
-    await nyan.timer(seconds=1)
+    await nyan.sleep(seconds=1)
     text.words = ''
 ```
 
@@ -551,26 +548,26 @@ def do():
 
 Yes, this is Python! Python added `async` and `await` as special keywords in Python 3.7. It's part of the [asyncio module](https://docs.python.org/3/library/asyncio.html).
 
-Using async functions means we can use the `await nyan.timer()` and `await nyan.animate()` functions, which makes some code a lot simpler and appear to run in-parallel, which new programmers find intuitive.
+Using async functions means we can use the `await nyan.sleep()` function, which makes some code a lot simpler and appear to run in-parallel, which new programmers find intuitive.
 
 ```python
 import nyan
 
 cat = nyan.new_text('=^.^=')
 
-# this code block uses async so it can use the 'await nyan.timer()' function
+# this code block uses async so it can use the 'await nyan.sleep()' function
 @nyan.repeat_forever
 async def change_bg():
     nyan.set_backdrop('pink')
-    await nyan.timer(seconds=1)
+    await nyan.sleep(seconds=1)
 
     nyan.set_backdrop('purple')
-    await nyan.timer(seconds=1)
+    await nyan.sleep(seconds=1)
 
     nyan.set_backdrop('light blue')
-    await nyan.timer(seconds=1)
+    await nyan.sleep(seconds=1)
 
-# this code block doesn't need async because it doesn't have `await nyan.timer()` or `await nyan.animate()`
+# this code block doesn't need async because it doesn't have `await nyan.sleep()`
 @nyan.repeat_forever
 def do():
     cat.turn(1)
@@ -584,38 +581,10 @@ The `async` keyword isn't necessary to write unless you want to use `await` func
 
 ```  
   File "example.py", line 31
-    await nyan.timer(seconds=1)
+    await nyan.sleep(seconds=1)
     ^
 SyntaxError: 'await' outside async function
 ```
 To fix that error, just put `async` before `def`.
 
 If you don't understand any of this, it's generally safe to just include `async` before `def`.
-
-## Why use nyan?
-
-nyan was designed to be an excellent starting point for brand new programmers. The goal of the project is to give someone that has never programmed before a compelling and successful experience in their first few minutes of programming. We aimed to make graphics programming as accessible as possible to as young an audience as possible.
-
-We found that many existing programming languages and graphics libraries presented unnecessary difficulties for new programmers — difficulties making simple things happen, confusing language, confusing program flow, unexplained concepts, etc. We know that even one initial disagreeable experience can turn people away from programming forever, and we wanted to prevent that outcome as much as possible.
-
-nyan was inspired by [MIT's Scratch](https://scratch.mit.edu), which has introduced millions of children and adults to programming and helped them to create and share personally meaningful computational projects. In fact, nyan's main designer worked on Scratch professionally for a brief period. But we found that for some learners, Scratch — with its graphical blocks and colorful interface — didn't feel like "real programming". For those learners wishing to use a mainstream textual programming language while removing the difficulties of graphics programming in these languages, we made nyan.
-
-
-nyan was designed with the following principles in mind:
-
-- No boilerplate - every line of code should do something meaningful and understandable. We want to limit the number of times a learner needs to ask "why do we have to include this line of code?"
-
-- As much as possible, commands should have immediate visual effects. For example, if a programmer types a `new_image` command the sprite should show up immediately on the screen. They shouldn't need to understand the invisible distinction between initializing a sprite and drawing the sprite.
-
-- Lines of code should be easily copy and pasted.
-
-- Command values should have descriptive labels that make it as clear as possible what the value means. Instead of `nyan.new_image('character.png', 50, 100)`, `nyan.new_image(image='character.png', x=50, y=100)`.
-
-- Use plain English as much as possible. For mathematical concepts, try to use language programmers might see in math classes. Try to use short names that are easier for younger people to type and spell. Make errors as clear and constructive as possible. Many of the commands and names were borrowed from Scratch, whose designers have spent decades working with children and observing what language makes sense to them.
-
-
-nyan was also designed with a custom Repl.it IDE in mind (coming soon), one that significantly lowers the usability problems of programming (installing the language, using a text editor, using the terminal, running programs, showing which commands are available, etc).
-
-While the learning curve for Python and nyan are still far from ideal for new programmers, we still think nyan provides a great way for new programmers to start programming with graphics.
-
-<3
