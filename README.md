@@ -37,9 +37,10 @@ Nyan is an excellent choice for beginner programmers to get started with graphic
 
 # How to install Nyan
 
-Run the following command in your terminal:
-
-    pip install nyan
+Make sure that you have Python 3.8 or greater. Run the following command in your terminal:
+```
+pip install nyan
+```
 
 # How to use Nyan
 
