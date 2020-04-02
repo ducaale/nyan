@@ -24,7 +24,7 @@ async def move_cat():
 @cat.when_clicked
 def win_function():
     cat.show()
-    cat.words = 'You won!'
+    cat.text = 'You won!'
 
 nyan.start_program()
 ```
@@ -315,9 +315,9 @@ face = nyan.new_text('^.^', font_size=100)
 
 @face.when_clicked
 async def do():
-    face.words = '*o*'
+    face.text = '*o*'
     await nyan.sleep(seconds=1)
-    face.words = '^.^'
+    face.text = '^.^'
 ```
 
 #### `@nyan.mouse.when_clicked` or `@nyan.when_mouse_clicked`
@@ -331,7 +331,7 @@ text = nyan.new_text('0, 0')
 
 @nyan.mouse.when_clicked
 def do():
-    text.words = f'{nyan.mouse.x}, {nyan.mouse.y}'
+    text.text = f'{nyan.mouse.x}, {nyan.mouse.y}'
     text.go_to(nyan.mouse)
 ```
 
@@ -395,9 +395,9 @@ cat = nyan.new_text('=^.^=')
 @nyan.when_key_pressed('space', 'enter') # if either the space key or enter key are pressed...
 def do(key):
     if key == 'enter':
-        cat.words = '=-.-='
+        cat.text = '=-.-='
     if key == 'space':
-        cat.words = '=*_*='
+        cat.text = '=*_*='
 ```
 
 #### `@nyan.when_any_key_pressed`
@@ -411,7 +411,7 @@ text = nyan.new_text('')
 
 @nyan.when_any_key_pressed
 def do(key):
-    text.words = f'{key} pressed!'
+    text.text = f'{key} pressed!'
 ```
 
 #### `@nyan.when_key_released()`
@@ -425,9 +425,9 @@ text = nyan.new_text('')
 
 @nyan.when_key_released('up')
 async def do(key):
-    text.words = 'up arrow released!'
+    text.text = 'up arrow released!'
     await nyan.sleep(seconds=1)
-    text.words = ''
+    text.text = ''
 ```
 
 #### `@nyan.when_any_key_released`
@@ -441,7 +441,7 @@ text = nyan.new_text('')
 
 @nyan.when_any_key_pressed
 def do(key):
-    text.words = f'{key} key released!''
+    text.text = f'{key} key released!''
 ```
 
 ## Audio Commands
