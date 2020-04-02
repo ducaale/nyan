@@ -602,7 +602,7 @@ def do():
 ```
 
 ## Packaging Nyan Programs
-Nyan comes with a packager that can be used to create stand-alone executables that you can be shared with other people without them having to install Python on their computers. To use it, run the following in your terminal
+Nyan comes with a packager that can be used to create stand-alone executables that can be shared with other people without them having to install Python on their computers. To use it, run the following in your terminal
 
 ```
 nyan-packager python_file
