@@ -463,14 +463,14 @@ def do(key):
 
 #### `nyan.new_sound()`
 ```python
-meow = play.new_sound(sound='meow.wav')
+meow = nyan.new_sound(sound='meow.wav')
 ```
 This will load a sound file with `.wav` extension and makes it ready to be played. This function should be mainly used for sound effects. You can get sounds from this site http://soundbible.com/ or you can generate your own using this tool http://www.bfxr.net/.
 
 #### `meow.play()`
 This will play the loaded sound file.
 ```python
-meow = play.new_sound(sound='meow.wav')
+meow = nyan.new_sound(sound='meow.wav')
 
 @nyan.when_key_pressed('space')
 def do():
