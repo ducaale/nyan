@@ -446,20 +446,78 @@ def do(key):
 
 ## Audio Commands
 
-#### `nyan.new_sound('meow.wav')`
+#### `nyan.new_sound()`
 ```
 meow = play.new_sound(sound='meow.wav')
 ```
-This will load a sound file and makes it ready to be played. Make sure you have a file named `meow.wav` in a folder named `assets` inside your project for the code above to work.
+This will load a sound file with `.wav` extension and makes it ready to be played. This function should be mainly used for sound effects. You can get sounds from this site http://soundbible.com/ or you can generate your own using this tool http://www.bfxr.net/.
 
 #### `meow.play()`
-This will play the sound.
+This will play the loaded sound file.
+```
+meow = play.new_sound(sound='meow.wav')
 
-#### `nyan.music.play('William Tell Overture Finale.mp3')`
-#### `await nyan.music.play_until_done('William Tell Overture Finale.mp3')`
+@nyan.when_key_pressed('space')
+async def do():
+    meow.play()
+```
+
+#### `nyan.music.play()`
+To play an mp3 file in the background, use `nyan.music.play()`, like this
+```
+nyan.music.play('William Tell Overture Finale.mp3', loop=True)
+```
+
+#### `await nyan.music.play_until_done()`
+This is the same as `nyan.music.play()`, but waits for the music to finish before continuing
+```
+@nyan.when_program_starts
+def do():
+    await nyan.music.play_until_done('William Tell Overture Finale.mp3')
+    print('music has ended')
+```
+
 #### `nyan.music.pause()`
+Pause the currently playing music
+```
+@nyan.when_program_starts
+def do():
+    nyan.music.play('William Tell Overture Finale.mp3')
+    await nyan.sleep(seconds=5)
+    nyan.music.pause()
+```
+
 #### `nyan.music.unpause()`
+Resume the paused music
+```
+@nyan.when_program_starts
+def do():
+    nyan.music.play('William Tell Overture Finale.mp3')
+    await nyan.sleep(seconds=5)
+    nyan.music.pause()
+    await nyan.sleep(seconds=5)
+    nyan.music.unpause()
+```
+
+#### `nyan.music.stop()`
+Stops the currently playing music
+```
+@nyan.when_program_starts
+def do():
+    nyan.music.play('William Tell Overture Finale.mp3')
+    await nyan.sleep(seconds=5)
+    nyan.music.pause()
+```
+
 #### `nyan.music.volume`
+You can use `nyan.music.volume` to get or set the current volume which ranges from 0 to 100. The default is 100
+```
+@nyan.when_program_starts
+def do():
+    nyan.music.play('William Tell Overture Finale.mp3')
+    await nyan.sleep(seconds=5)
+    nyan.music.volume = 70
+```
 
 ## Other Useful Commands
 
