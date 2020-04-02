@@ -448,14 +448,14 @@ def do(key):
 ## Audio Commands
 
 #### `nyan.new_sound()`
-```
+```python
 meow = play.new_sound(sound='meow.wav')
 ```
 This will load a sound file with `.wav` extension and makes it ready to be played. This function should be mainly used for sound effects. You can get sounds from this site http://soundbible.com/ or you can generate your own using this tool http://www.bfxr.net/.
 
 #### `meow.play()`
 This will play the loaded sound file.
-```
+```python
 meow = play.new_sound(sound='meow.wav')
 
 @nyan.when_key_pressed('space')
@@ -465,13 +465,13 @@ def do():
 
 #### `nyan.music.play()`
 To play an mp3 file in the background, use `nyan.music.play()`, like this
-```
+```python
 nyan.music.play('William Tell Overture Finale.mp3', loop=True)
 ```
 
 #### `await nyan.music.play_until_done()`
 This is the same as `nyan.music.play()`, but waits for the music to finish before continuing
-```
+```python
 @nyan.when_program_starts
 async def do():
     await nyan.music.play_until_done('William Tell Overture Finale.mp3')
@@ -480,7 +480,7 @@ async def do():
 
 #### `nyan.music.pause()`
 Pause the currently playing music
-```
+```python
 @nyan.when_program_starts
 async def do():
     nyan.music.play('William Tell Overture Finale.mp3')
@@ -490,7 +490,7 @@ async def do():
 
 #### `nyan.music.unpause()`
 Resume the paused music
-```
+```python
 @nyan.when_program_starts
 async def do():
     nyan.music.play('William Tell Overture Finale.mp3')
@@ -502,7 +502,7 @@ async def do():
 
 #### `nyan.music.stop()`
 Stops the currently playing music
-```
+```python
 @nyan.when_program_starts
 async def do():
     nyan.music.play('William Tell Overture Finale.mp3')
@@ -512,7 +512,7 @@ async def do():
 
 #### `nyan.music.volume`
 You can use `nyan.music.volume` to get or set the current volume which ranges from 0 to 100. The default is 100
-```
+```python
 @nyan.when_program_starts
 async def do():
     nyan.music.play('William Tell Overture Finale.mp3')
