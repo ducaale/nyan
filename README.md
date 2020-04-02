@@ -459,7 +459,7 @@ This will play the loaded sound file.
 meow = play.new_sound(sound='meow.wav')
 
 @nyan.when_key_pressed('space')
-async def do():
+def do():
     meow.play()
 ```
 
@@ -473,7 +473,7 @@ nyan.music.play('William Tell Overture Finale.mp3', loop=True)
 This is the same as `nyan.music.play()`, but waits for the music to finish before continuing
 ```
 @nyan.when_program_starts
-def do():
+async def do():
     await nyan.music.play_until_done('William Tell Overture Finale.mp3')
     print('music has ended')
 ```
@@ -482,7 +482,7 @@ def do():
 Pause the currently playing music
 ```
 @nyan.when_program_starts
-def do():
+async def do():
     nyan.music.play('William Tell Overture Finale.mp3')
     await nyan.sleep(seconds=5)
     nyan.music.pause()
@@ -492,7 +492,7 @@ def do():
 Resume the paused music
 ```
 @nyan.when_program_starts
-def do():
+async def do():
     nyan.music.play('William Tell Overture Finale.mp3')
     await nyan.sleep(seconds=5)
     nyan.music.pause()
@@ -504,7 +504,7 @@ def do():
 Stops the currently playing music
 ```
 @nyan.when_program_starts
-def do():
+async def do():
     nyan.music.play('William Tell Overture Finale.mp3')
     await nyan.sleep(seconds=5)
     nyan.music.pause()
@@ -514,7 +514,7 @@ def do():
 You can use `nyan.music.volume` to get or set the current volume which ranges from 0 to 100. The default is 100
 ```
 @nyan.when_program_starts
-def do():
+async def do():
     nyan.music.play('William Tell Overture Finale.mp3')
     await nyan.sleep(seconds=5)
     nyan.music.volume = 70
