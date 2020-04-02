@@ -4,10 +4,10 @@ PIPE_GAP = 115
 FLAP_STRENGTH = 12.0
 GRAVITY = 1.6
 
-background = nyan.new_sprite('background.png', size=75)
-pipe_top = nyan.new_sprite('top.png')
-pipe_bottom = nyan.new_sprite('bottom.png')
-bird = nyan.new_sprite('bird0.png')
+background = nyan.new_image('background.png', size=75)
+pipe_top = nyan.new_image('top.png')
+pipe_bottom = nyan.new_image('bottom.png')
+bird = nyan.new_image('bird0.png')
 
 nyan.screen.width = 300
 nyan.screen.height = 531
