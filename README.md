@@ -67,6 +67,7 @@ The rest of this document is divided into the following sections:
 - [Keyboard Commands](#keyboard-commands) - Detecting keyboard actions.
 - [Audio Commands](#audio-commands) - Playing sounds and music.
 - [Other Useful Commands](#other-useful-commands) - General commands.
+- [Packaging Nyan Programs](#packaging-nyan-programs)
 
 ## Basic Commands
 
@@ -599,6 +600,15 @@ def do():
     text.x = position.x
     text.y = position.y
 ```
+
+## Packaging Nyan Programs
+Nyan comes with a packager that can be used to create stand-alone executables that you can be shared with other people without them having to install Python on their computers. To use it, run the following in your terminal
+
+```
+nyan-packager python_file
+```
+
+This will create an executable file with other stuff in a dist folder inside your project. You can change the icon of the executable with `-icon icon_file` option.
 
 ## What's with all this `async`/`await` stuff? Is this Python?
 
