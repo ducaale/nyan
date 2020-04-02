@@ -163,7 +163,6 @@ def do():
 The above code will make the cat turn around forever. Sprites have other commands that you can see in the next section called Sprite Commands.
 
 #### `@nyan.when_program_starts`
-
 To make some code run just at the beginning of your project, use `@nyan.when_program_starts`, like this:
 
 ```python
@@ -177,7 +176,6 @@ def do():
 This will make the cat turn upside down instantly when the program starts.
 
 #### `await nyan.sleep(seconds=1)`
-
 To run code after a waiting period, you can use the `await nyan.sleep()` command like this:
 
 ```python
@@ -191,6 +189,22 @@ async def do():
 ```
 
 This will make the cat turn upside down instantly when the program starts, wait 2 seconds, then turn back up again.
+
+#### `nyan.broadcast()`
+You can use `nyan.broadcast()` to broadcast an event that can be picked up by an event listener.
+```python
+@nyan.repeat_forever
+def do():
+    nyan.broadcast('marco')
+```
+
+#### `@nyan.when_event_recieved()`
+To run code in response to a broadcasted event, use `@nyan.when_event_recieved()`, like this
+```python
+@nyan.when_event_recieved('marco')
+def do():
+    print('polo')
+```
 
 ## Sprite Commands
 
