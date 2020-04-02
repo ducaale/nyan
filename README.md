@@ -217,7 +217,7 @@ Sprites also have properties that can be changed to change how the sprite looks.
 - **`sprite.size`** — How big the sprite is. The default is 100, but it can be made bigger or smaller.
 - **`sprite.angle`** — How much the sprite is turned. Positive numbers are counter-clockwise. The default is 0 degrees (pointed to the right).
 - **`sprite.transparency`** — How see-through the sprite is from 0 to 100. 0 is completely see-through, 100 is not see-through at all. The default is 100.
-- **`sprite.brighness`** - How bright or dim the sprite is from -100 to 100. -100 is completely dark, 100 is white. The default is 0.
+- **`sprite.brightness`** - How bright or dim the sprite is from -100 to 100. -100 is completely dark, 100 is white. The default is 0.
 - **`sprite.is_hidden`** — `True` if the sprite has been hidden with the `sprite.hide()` command. Otherwise `False`.
 - **`sprite.is_shown`** — `True` if the sprite has not been hidden with the `sprite.hide()` command. Otherwise `False`.
 - **`sprite.left`** — The x position of the left-most part of the sprite.
