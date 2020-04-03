@@ -1,5 +1,7 @@
 # Nyan
 
+[![PyPI version](https://badge.fury.io/py/nyan.svg)](https://badge.fury.io/py/nyan)
+
 Nyan - a fork of [Python Play](https://github.com/replit/play) - is an open-source code library for the Python programming language that makes it as easy as possible to start making games. Here's the code to make a simple game using Nyan:
 
 ```python
