@@ -67,7 +67,7 @@ The rest of this document is divided into the following sections:
 - [Keyboard Commands](#keyboard-commands) - Detecting keyboard actions.
 - [Audio Commands](#audio-commands) - Playing sounds and music.
 - [Other Useful Commands](#other-useful-commands) - General commands.
-- [Packaging Nyan Programs](#packaging-nyan-programs) - Creating an executable for sharing with other people.
+- [Packaging Nyan Programs](#packaging-nyan-programs) - Creating an executable that can be shared with other people.
 
 ## Basic Commands
 
