@@ -127,20 +127,7 @@ def repeat_forever(func):
     _game.register_forever_callback(func)
     return func
 
-"""
-TODO: determine the best name for this function. these are the current
-candidates, other names are also welcome:
-
-- @foreach_sprite_with_tag('player', 'bullet')
-- @foreach_sprite('player', 'player')
-- @foreach('player', 'bullet')
-
-I am leaning toward the first one, but the name is somewhat confusing
-when multiple tags are passed. for example, will this function
-`@foreach_sprite_with_tag('player', 'bullet')` return sprites that has
-both tags or one of them?
-"""
-def foreach_sprite(tag=None, tags=[]):
+def foreach_sprite(*, tag=None, tags=[]):
     """
     Calls the given function for each sprite that has any of the passed tags.
     To be used in conjunction with `@repeat_forever` and `@when_program_starts`

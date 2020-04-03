@@ -5,7 +5,7 @@ class SpriteManager():
         self.all_sprites = []
         self.sprite_groups = defaultdict(set)
 
-    def get_sprites(self, tag=None, tags=[]):
+    def get_sprites(self, *, tag=None, tags=[]):
         if tag is not None: tags = [tag]
 
         if len(tags) == 0:
