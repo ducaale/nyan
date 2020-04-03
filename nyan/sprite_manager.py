@@ -5,16 +5,11 @@ class SpriteManager():
         self.all_sprites = []
         self.sprite_groups = defaultdict(set)
 
-    def get_sprites(self, *, tag=None, tags=[]):
-        if tag is not None: tags = [tag]
-
-        if len(tags) == 0:
+    def get_sprites(self, *, tag=None):
+        if tag is None:
             return self.all_sprites.copy()
         else:
-            sprites = set()
-            for tag in tags:
-                sprites |= self.sprite_groups[tag]
-            return sprites
+            return self.sprite_groups[tag].copy()
 
     def add_sprite_to_group(self, sprite, group):
         self.sprite_groups[group].add(sprite)

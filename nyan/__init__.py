@@ -127,23 +127,29 @@ def repeat_forever(func):
     _game.register_forever_callback(func)
     return func
 
-def foreach_sprite(*, tag=None, tags=[]):
+def foreach_sprite(*sprites, tag=None):
     """
-    Calls the given function for each sprite that has any of the passed tags.
-    To be used in conjunction with `@repeat_forever` and `@when_program_starts`
-    decorators. Example:
+    Calls the given function for each sprite passed or in the case a tag is passed,
+    for each sprite that has the given tag. To be used in conjunction with
+    `@repeat_forever` and `@when_program_starts` decorators. Example:
     ```
     @nyan.repeat_forever
-    @nyan.foreach_sprite(tags=['projectile'])
-    async def propel_projectile(projectile):
-        projectile.move(25)
+    @nyan.foreach_sprite(player1, player2, player3, player4)
+    async def animate_player(player):
+        next_frame(player)
+        await nyan.sleep(player.frameTime)
+
+    @nyan.repeat_forever
+    @nyan.foreach_sprite(tag='player-missile')
+    async def propel_missile(missile):
+        missile.move(25)
     ```
     """
     def decorator(func):
         if tag is not None:
-            func.tags = [tag]
+            func.tag = tag
         else:
-            func.tags = tags
+            func.sprites = sprites
         return func
     return decorator
 
