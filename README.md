@@ -494,7 +494,7 @@ async def do():
 ```
 
 #### `nyan.music.pause()`
-Pause the currently playing music
+Pauses the currently playing music
 ```python
 @nyan.when_program_starts
 async def do():
@@ -504,7 +504,7 @@ async def do():
 ```
 
 #### `nyan.music.unpause()`
-Resume the paused music
+Resumes the paused music
 ```python
 @nyan.when_program_starts
 async def do():
@@ -522,7 +522,7 @@ Stops the currently playing music
 async def do():
     nyan.music.play('William Tell Overture Finale.mp3')
     await nyan.sleep(seconds=5)
-    nyan.music.pause()
+    nyan.music.stop()
 ```
 
 #### `nyan.music.volume`
