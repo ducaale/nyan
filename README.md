@@ -571,7 +571,7 @@ The way to get information about the screen. `nyan.screen` has these properties:
 
 #### `nyan.get_sprites()`
 
-Returns a list of all the sprites (images, shapes, text) in the program.
+Returns a list of all the sprites (images, shapes, text) in the program. Takes an optional tag parameter that can be used to get all sprites that have a give tag.
 
 #### `nyan.random_number()`
 
