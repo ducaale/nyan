@@ -106,8 +106,11 @@ class Drawable2D(ABC):
         self._brightness = clamp(value, -100, 100)
         self._secondary_surface = self._compute_secondary_surface()
 
-    def move(self, steps):
-        angle = math.radians(self._angle)
+    def move(self, steps, direction=None):
+        if direction is None:
+            angle = math.radians(self.angle)
+        else:
+            angle = math.radians(direction)
         self.x += steps * math.cos(angle)
         self.y += steps * math.sin(angle)
 

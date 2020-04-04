@@ -216,6 +216,7 @@ def do():
 Sprites (images and text) have a few simple commands:
 
 - **`sprite.move(10)`** — moves the sprite 10 pixels in the direction it's facing (starts facing right). Use negative numbers (-10) to go backward.
+- **`sprite.move(10, direction=45)`** — moves the sprite 10 pixels at an angle specified by the direction.
 - **`sprite.turn(20)`** — Turns the sprite 20 degrees counter-clockwise. Use negative numbers (-20) to turn the other way.
 - **`sprite.go_to(other_sprite)`** — Makes `sprite` jump to another sprite named `other_sprite`'s position on the screen. Can also be used to make the sprite follow the mouse: `sprite.go_to(nyan.mouse)`.
 - **`sprite.go_to(x=100, y=50)`** — Makes `sprite` jump to x=100, y=50 (right and up a little).
