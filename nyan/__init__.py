@@ -131,7 +131,7 @@ def foreach_sprite(*sprites, tag=None):
     """
     Calls the given function for each sprite passed or in the case a tag is passed,
     for each sprite that has the given tag. To be used in conjunction with
-    `@repeat_forever` and `@when_program_starts` decorators. Example:
+    `@nya.repeat_forever` and `@nyan.when_program_starts` decorators. Example:
     ```
     @nyan.repeat_forever
     @nyan.foreach_sprite(player1, player2, player3, player4)

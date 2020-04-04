@@ -210,7 +210,7 @@ def do():
 ```
 
 #### `@nyan.foreach_sprite()`
-attaches a script to each sprite passed or in the case a tag is passed, for each sprite that has the given tag. Should be used in conjunction with `@repeat_forever` and `@when_program_starts` decorators. Example:
+attaches a script to each sprite passed or in the case a tag is passed, for each sprite that has the given tag. Should be used in conjunction with `@nyan.repeat_forever` and `@nyan.when_program_starts` decorators. Example:
 
 ```python
 @nyan.repeat_forever
