@@ -31,7 +31,7 @@ class SpriteManager():
         if not mouse._is_clicked_this_frame: return
 
         for sprite in self.all_sprites:
-            if sprite.is_touching(mouse):
+            if sprite.is_touching(mouse) and sprite.is_shown:
                 sprite._invoke_when_clicked_callbacks(task_runner)
 
     def draw(self, screen):
