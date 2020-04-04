@@ -13,7 +13,7 @@ from .custom_event import CustomEvent as _CustomEvent
 from .sound import Sound as _Sound
 from .music import Music as _Music
 from .task_runner import TaskRunner as _TaskRunner
-from .sprite import Sprite as _Sprite
+from .image_sprite import ImageSprite as _ImageSprite
 from .text import Text as _Text
 from .rect import Rect as _Rect
 from .circle import Circle as _Circle
@@ -63,10 +63,10 @@ def new_image(
     image, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0,
     size=100, is_hidden=False
 ):
-    sprite = _Sprite(_sprite_manager, image, x, y, z, angle, size)
-    _position_sprite(sprite, top, bottom, right, left)
+    image_sprite = _ImageSprite(_sprite_manager, image, x, y, z, angle, size)
+    _position_sprite(image_sprite, top, bottom, right, left)
     sprite.is_hidden = is_hidden
-    return sprite
+    return image_sprite
 
 def new_text(
     text, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0,

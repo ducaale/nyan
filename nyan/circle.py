@@ -1,9 +1,9 @@
 import pygame
 
 from .color import color_name_to_rgb
-from .drawable_2d import Drawable2D
+from .sprite import Sprite
 
-class Circle(Drawable2D):
+class Circle(Sprite):
     def __init__(self, game, color, x, y, z, angle, radius, border_color, border_width):
         self._radius = radius
         self._color = color

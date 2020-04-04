@@ -3,9 +3,9 @@ import copy
 import pygame
 
 from .color import color_name_to_rgb
-from .drawable_2d import Drawable2D
+from .sprite import Sprite
 
-class Rect(Drawable2D):
+class Rect(Sprite):
     def __init__(self, game, color, x, y, z, angle, width, height, border_color, border_width):
         self._width = width
         self._height = height

@@ -3,9 +3,9 @@ import os
 import pygame
 
 from .color import color_name_to_rgb
-from .drawable_2d import Drawable2D
+from .sprite import Sprite
 
-class Text(Drawable2D):
+class Text(Sprite):
     def __init__(self, game, text, x, y, z, angle, font, font_size, color):
         self._text = text
         self._font = font
