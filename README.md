@@ -209,6 +209,22 @@ def do():
     print('polo')
 ```
 
+#### `@nyan.foreach_sprite()`
+attaches a script to each sprite passed or in the case a tag is passed, for each sprite that has the given tag. Should be used in conjunction with `@repeat_forever` and `@when_program_starts` decorators. Example:
+
+```python
+@nyan.repeat_forever
+@nyan.foreach_sprite(player1, player2, player3, player4)
+async def animate_player(player):
+    next_frame(player)
+    await nyan.sleep(player.frameTime)
+
+@nyan.repeat_forever
+@nyan.foreach_sprite(tag='player-missile')
+async def propel_missile(missile):
+    missile.move(25)
+```
+
 ## Sprite Commands
 
 #### Simple commands
@@ -224,6 +240,8 @@ Sprites (images and text) have a few simple commands:
 - **`sprite.point_towards(x=100, y=50)`** — Turns `sprite` so it points toward x=100, y=50 (right and up a little).
 - **`sprite.hide()`** — Hides `sprite`. It can't be clicked when it's hidden.
 - **`sprite.show()`** — Shows `sprite` if it's hidden.
+- **`sprite.add_tag('car')`** — Adds a tag named `car` to the sprite. Tagging a sprite adds it to a group that can be fetched later by other functions.
+- **`sprite.remove_tag('car')`** — removes the `car` tag from the sprite
 - **`sprite.clone()`** — Makes a copy or clone of the sprite and returns it.
 - **`sprite.remove()`** — Removes a sprite from the screen permanently. Calling sprite commands on a removed sprite won't do anything.
 
