@@ -604,6 +604,19 @@ def do():
     text.y = position.y
 ```
 
+#### `nyan.new_timer()`
+Creates a timer. Useful for keeping track of time and for doing animations.
+
+```python
+timer = new_timer()
+```
+
+Once a timer is created, it will have the following commands and properties:
+
+- **`timer.reset()`** — resets the timer
+- **`timer.seconds`** — time elapsed in seconds since creation or last reset
+- **`timer.milliseconds`** — time elapsed in milliseconds since creation or last reset
+
 ## Packaging Nyan Programs
 Nyan comes with a packager that can be used to create stand-alone executables that can be shared with other people without them having to install Python on their computers. To use it, run the following in your terminal
 
