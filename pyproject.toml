@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nyan"
-version = "0.7.0"
+version = "0.7.1"
 description = "The easiest way to start coding games and graphics projects in Python"
 authors = ["ducaale <sharaf.13@hotmail.com>"]
 license = "MIT"
@@ -9,7 +9,7 @@ readme = "README.md"
 include = ["nyan_packager.py"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 pygame = "^1.9.6"
 pytest = "^5.2"
 pyinstaller = "^3.6"

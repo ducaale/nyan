@@ -39,3 +39,7 @@ class Random():
             self.random_number(self.screen.left, self.screen.right),
             self.random_number(self.screen.bottom, self.screen.top)
         )
+ 
+    def random_item(self, items):
+        assert len(items) > 0
+        return items[self.random_number(0, len(items)-1)]

@@ -47,6 +47,7 @@ when_event_recieved = _custom_event.when_event_recieved
 random_color = _random.random_color
 random_number = _random.random_number
 random_position = _random.random_position
+random_item = _random.random_item
 
 get_sprites = _sprite_manager.get_sprites
 
