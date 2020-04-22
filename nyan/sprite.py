@@ -48,10 +48,18 @@ class Sprite(ABC):
 
     def _invoke_when_clicked_callbacks(self, task_runner):
         for callback in self._when_clicked_callbacks:
-            task_runner.run(callback)
+            try:
+                iterator = iter(callback)
+            except TypeError:
+                task_runner.run(callback)
+            else:
+                task_runner.run(*callback)
 
-    def when_clicked(self, callback):
-        self._when_clicked_callbacks.append(make_async(callback))
+    def when_clicked(self, callback, call_with_sprite=False):
+        if call_with_sprite:
+            self._when_clicked_callbacks.append((make_async(callback), self))
+        else:
+            self._when_clicked_callbacks.append(make_async(callback))
 
     def add_tag(self, tag):
         self._tags.add(tag)

@@ -157,6 +157,12 @@ def foreach_sprite(*sprites, tag=None):
         return func
     return decorator
 
+def when_sprite_clicked(*sprites):
+    def decorator(func):
+        for sprite in sprites:
+            sprite.when_clicked(func, call_with_sprite=True)
+    return decorator
+
 async def sleep(seconds=1.0):
     """
     Wait a number of seconds. Used with the await keyword like this:
