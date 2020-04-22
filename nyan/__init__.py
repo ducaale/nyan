@@ -70,9 +70,12 @@ def new_image(
     return image_sprite
 
 def new_text(
-    text, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0,
+    text=None, words=None, x=0, y=0, z=0, top=None, bottom=None, right=None, left=None, angle=0,
     font=None, font_size=50, color='black', is_hidden=False
 ):
+    assert text is not None or words is not None, "either text or words should be passed to new_text()"
+    if words is not None: text = words
+
     text = _Text(_sprite_manager, text, x, y, z, angle, font, font_size, color)
     _position_sprite(text, top, bottom, right, left)
     text.is_hidden = is_hidden
@@ -177,3 +180,8 @@ def start_program():
         _task_runner.loop.run_forever()
     finally:
         _pygame.quit()
+
+# aliasing to achieve compatibility with replit-play api
+# TODO: add nyan.backdrop
+timer = sleep
+new_box = new_rect

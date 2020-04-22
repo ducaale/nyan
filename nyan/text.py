@@ -29,6 +29,9 @@ class Text(Sprite):
         self._primary_surface = self._compute_primary_surface()
         self._secondary_surface = self._compute_secondary_surface()
 
+    # propery alias to achieve compatibility with replit-play api
+    words = text
+
     @property
     def font(self):
         return self._font
