@@ -27,7 +27,7 @@ def run():
     original_cwd = os.getcwd()
     os.chdir(dirname)
 
-    assets_src = os.path.join(dirname, 'assets', '*')
+    assets_src = os.path.join(dirname, 'assets')
     assets_dest = 'assets'
     separator = ';' if platform.system() == 'Windows' else ':'
 
@@ -36,9 +36,11 @@ def run():
         f'--name={name}',
         '--log-level=ERROR',
         '--distpath=dist',
-        f'--add-data={assets_src}{separator}{assets_dest}',
         os.path.join(filename),
     ]
+
+    if os.path.exists('assets'):
+        options.append(f'--add-data={assets_src}{separator}{assets_dest}')
 
     if not args.debug:
         options.append('--windowed')
