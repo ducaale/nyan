@@ -357,6 +357,22 @@ async def do():
     face.text = '^.^'
 ```
 
+#### @nyan.when_sprite_clicked()
+
+If you wanted to run the same code when multiple sprites are clicked, you can use @nyan.when_sprite_clicked():
+
+```python
+face1 = nyan.new_text('^.^', x=-100, font_size=100)
+face2 = nyan.new_text('^_^', x=100, font_size=100)
+
+@nyan.when_sprite_clicked(face1, face2) # takes as many sprites as you want
+async def do(sprite):
+    starting_words = sprite.text
+    sprite.text = '*o*'
+    await play.sleep(seconds=1)
+    sprite.text = starting_words
+```
+
 #### `@nyan.mouse.when_clicked` or `@nyan.when_mouse_clicked`
 
 To run code when the mouse is clicked anywhere, use `@nyan.mouse.when_clicked` or `@nyan.when_mouse_clicked` (they do the same exact thing).
