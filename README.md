@@ -357,9 +357,9 @@ async def do():
     face.text = '^.^'
 ```
 
-#### @nyan.when_sprite_clicked()
+#### `@nyan.when_sprite_clicked()`
 
-If you wanted to run the same code when multiple sprites are clicked, you can use @nyan.when_sprite_clicked():
+If you wanted to run the same code when multiple sprites are clicked, you can use `@nyan.when_sprite_clicked()`:
 
 ```python
 face1 = nyan.new_text('^.^', x=-100, font_size=100)
