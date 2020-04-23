@@ -14,8 +14,11 @@ class Text(Sprite):
         super().__init__(game, x, y, z, angle, 100)
 
     def _compute_primary_surface(self):
-        font = self._font and os.path.join('assets', self._font)
-        pygame_font = pygame.font.Font(font, self._font_size)
+        if self._font is not None:
+            font = os.path.join('assets', self._font)
+            pygame_font = pygame.font.Font(font, self._font_size)
+        else:
+            pygame_font = pygame.font.SysFont('Sans', self._font_size)
         surface = pygame_font.render(self._text, True, color_name_to_rgb(self._color))
         return surface
 
