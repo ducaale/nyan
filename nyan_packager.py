@@ -4,8 +4,10 @@ import argparse
 import os
 import platform
 import shutil
+import warnings
 
 import PyInstaller.__main__
+warnings.filterwarnings("ignore", category=SyntaxWarning)
 
 def run():
     parser = argparse.ArgumentParser(description='nyan Packager')
