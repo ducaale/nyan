@@ -20,6 +20,9 @@ def run():
     parser.add_argument(
         '-d', '--debug', action='store_true', help='enable console output'
     )
+    parser.add_argument(
+        '-f', '--onefile', action='store_true'
+    )
     args = parser.parse_args()
 
     dirname = os.path.dirname(args.python_file.name) or "."
@@ -29,10 +32,6 @@ def run():
     original_cwd = os.getcwd()
     os.chdir(dirname)
 
-    assets_src = os.path.join(dirname, 'assets')
-    assets_dest = 'assets'
-    separator = ';' if platform.system() == 'Windows' else ':'
-
     options = [
         '--clean',
         f'--name={name}',
@@ -41,12 +40,22 @@ def run():
         os.path.join(filename),
     ]
 
-    if os.path.exists('assets'):
-        options.append(f'--add-data={assets_src}{separator}{assets_dest}')
+    if args.onefile:
+        options.append('--onefile')
+        if os.path.exists('assets'):
+            shutil.copytree('assets', os.path.join('dist', 'assets'))
+    else:
+        options.append('--onedir')
+        if os.path.exists('assets'):
+            assets_src = os.path.join(dirname, 'assets')
+            assets_dest = 'assets'
+            separator = ';' if platform.system() == 'Windows' else ':'
+
+            options.append(f'--add-data={assets_src}{separator}{assets_dest}')
 
     if not args.debug:
         options.append('--windowed')
-        
+
     if args.icon:
         options.append(f'--icon={args.icon.name}')
 
