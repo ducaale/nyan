@@ -638,6 +638,18 @@ def do():
     text.y = position.y
 ```
 
+### `nyan.random_item()`
+
+Picks a random item from a list. The passed list should contain at least one item.
+
+```python
+text = nyan.text('WOO')
+@nyan.repeat_forever
+def do():
+    random_angle = nyan.random_item([0, 90, 180, 270])
+    text.angle = random_angle
+```
+
 #### `nyan.new_timer()`
 Creates a timer. Useful for keeping track of time and for doing animations.
 
