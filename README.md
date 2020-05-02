@@ -638,7 +638,7 @@ def do():
     text.y = position.y
 ```
 
-### `nyan.random_item()`
+#### `nyan.random_item()`
 
 Picks a random item from a list. The passed list should contain at least one item.
 
