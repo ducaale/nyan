@@ -1,5 +1,3 @@
-import copy
-
 import pygame
 
 from .color import color_name_to_rgb
