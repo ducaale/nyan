@@ -16,6 +16,7 @@ from .task_runner import TaskRunner as _TaskRunner
 from .image_sprite import ImageSprite as _ImageSprite
 from .text import Text as _Text
 from .rect import Rect as _Rect
+from .line import Line as _Line
 from .circle import Circle as _Circle
 from .random import Random as _Random
 from .timer import new_timer
@@ -91,6 +92,10 @@ def new_rect(
     _position_sprite(rect, top, bottom, right, left)
     rect.is_hidden = is_hidden
     return rect
+
+def new_line(color='black', x1=100, y1=0, x2=-100, y2=0, z=0, thickness=1):
+    line = _Line(_sprite_manager, color, x1, y1, x2, y2, z, thickness)
+    return line
 
 def new_circle(
     color='black', x=0, y=0, z=0, top=None, bottom=None, right=None, left=None,
