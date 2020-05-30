@@ -23,9 +23,12 @@ class SpriteManager():
             self.add_sprite_to_group(sprite, tag)
 
     def unregister_sprite(self, sprite):
-        self.all_sprites.remove(sprite)
-        for tag in sprite._tags:
-            self.remove_sprite_from_group(sprite, tag)
+        try:
+            self.all_sprites.remove(sprite)
+            for tag in sprite._tags:
+                self.remove_sprite_from_group(sprite, tag)
+        except ValueError:
+            pass
 
     def invoke_callbacks(self, task_runner, mouse):
         if not mouse._is_clicked_this_frame: return
