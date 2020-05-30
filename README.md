@@ -102,7 +102,7 @@ character = nyan.new_image(
     )
 ```
 
-This will place an image in the middle of the screen. Make sure you have a file named `character.png` in a folder named `assets` inside your project for the code above to work. You can find images online at sites like http://icons.iconarchive.com/icons/icojam/animals/64/01-bull-icon.png, or you can make your own using an online sprite editor like this one https://www.piskelapp.com/.
+This will place an image in the middle of the screen. Make sure you have a file named `character.png` in a folder named `assets` inside your project for the code above to work. You can find images online at sites like [OpenGameArt](https://opengameart.org/), or you can make your own using an online sprite editor like [Piskel](https://www.piskelapp.com/).
 
 #### `nyan.new_text()`
 ```python
@@ -503,7 +503,7 @@ def do(key):
 ```python
 meow = nyan.new_sound(sound='meow.wav')
 ```
-This will load a sound file with `.wav` extension and makes it ready to be played. This function should be mainly used for sound effects. You can get sounds from this site http://soundbible.com/ or you can generate your own using this tool http://www.bfxr.net/.
+This will load a sound file with `.wav` extension and makes it ready to be played. This function should be mainly used for sound effects. You can get sounds from online sites like [Freesound](https://freesound.org/browse/) or you can generate your own using [Bfxr](http://www.bfxr.net/).
 
 #### `meow.play()`
 This will play the loaded sound file.
