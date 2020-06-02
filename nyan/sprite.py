@@ -47,6 +47,8 @@ class Sprite(ABC):
         return surface
 
     def _invoke_when_clicked_callbacks(self, task_runner):
+        if self.is_hidden: return False
+
         for callback in self._when_clicked_callbacks:
             try:
                 iterator = iter(callback)
@@ -141,7 +143,10 @@ class Sprite(ABC):
         self.is_hidden = not show
 
     def is_touching(self, sprite_or_point):
+        if self.is_hidden: return False
+
         if isinstance(sprite_or_point, Sprite):
+            if sprite_or_point.is_hidden: return False
             return sprite_touching_sprite(sprite_or_point, self)
         else:
             return point_touching_sprite(sprite_or_point, self)

@@ -34,6 +34,8 @@ class Mouse():
                 task_runner.run(callback)
 
     def is_touching(self, other):
+        if self.is_hidden: return False
+
         return point_touching_sprite(self, other)
 
     def when_clicked(self, func):
