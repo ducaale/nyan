@@ -19,6 +19,7 @@ class Sprite(ABC):
         self._brightness = 0
 
         self.is_hidden = False
+        self.is_dead = False
         self._tags = set()
         self._when_clicked_callbacks = []
 
@@ -47,7 +48,7 @@ class Sprite(ABC):
         return surface
 
     def _invoke_when_clicked_callbacks(self, task_runner):
-        if self.is_hidden: return False
+        if self.is_hidden or self.is_dead: return False
 
         for callback in self._when_clicked_callbacks:
             try:
@@ -78,6 +79,7 @@ class Sprite(ABC):
         return clone
 
     def remove(self):
+        self.is_dead = True
         self._game.unregister_sprite(self)
 
     @property 
@@ -143,10 +145,11 @@ class Sprite(ABC):
         self.is_hidden = not show
 
     def is_touching(self, sprite_or_point):
-        if self.is_hidden: return False
+        if self.is_hidden or self.is_dead: return False
 
         if isinstance(sprite_or_point, Sprite):
-            if sprite_or_point.is_hidden: return False
+            if sprite_or_point.is_hidden or sprite_or_point.is_dead:
+                return False
             return sprite_touching_sprite(sprite_or_point, self)
         else:
             return point_touching_sprite(sprite_or_point, self)
