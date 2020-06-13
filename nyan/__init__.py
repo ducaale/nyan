@@ -66,7 +66,7 @@ def new_image(
 ):
     image_sprite = _ImageSprite(_sprite_manager, image, x, y, z, angle, size)
     _position_sprite(image_sprite, top, bottom, right, left)
-    sprite.is_hidden = is_hidden
+    image_sprite.is_hidden = is_hidden
     return image_sprite
 
 def new_text(
