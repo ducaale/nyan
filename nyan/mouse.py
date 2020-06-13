@@ -1,5 +1,6 @@
 import math
 
+from .sprite import Sprite
 from .utils import point_touching_sprite, make_async
 
 class Mouse():
@@ -34,7 +35,9 @@ class Mouse():
                 task_runner.run(callback)
 
     def is_touching(self, other):
-        if self.is_hidden: return False
+        if isinstance(other, Sprite):
+            if other.is_hidden or other.is_dead:
+                return False
 
         return point_touching_sprite(self, other)
 
