@@ -7,7 +7,7 @@ from .sprite import Sprite
 
 class Text(Sprite):
     def __init__(self, game, text, x, y, z, angle, font, font_size, color):
-        self._text = text
+        self._text = str(text)
         self._font = font
         self._font_size = font_size
         self._color = color
@@ -28,7 +28,7 @@ class Text(Sprite):
 
     @text.setter
     def text(self, text):
-        self._text = text
+        self._text = str(text)
         self._primary_surface = self._compute_primary_surface()
         self._secondary_surface = self._compute_secondary_surface()
 
