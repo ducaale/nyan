@@ -670,7 +670,7 @@ Nyan comes with a packager that can be used to create stand-alone executables th
 nyan-packager python_file
 ```
 
-This will create an executable file with other stuff in a dist folder inside your project. You can change the icon of the executable with `-icon icon_file` option.
+This will create an executable file with other stuff in a dist folder inside your project. You can change the icon of the executable with `--icon icon_file` option. If you would like to have a less cluttered output, you can use `--onefile` flag to create a single executable + your assets folder.
 
 ## What's with all this `async`/`await` stuff? Is this Python?
 
