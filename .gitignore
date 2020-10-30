@@ -2,6 +2,7 @@
 examples/*
 !examples/flappybird
 !examples/main_menu
+!examples/city-defender
 __pycache__
 .venv
 nyan.egg-info
