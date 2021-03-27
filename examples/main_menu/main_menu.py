@@ -63,5 +63,6 @@ def navigate(current, next):
         if next == 'main_menu':
             button1.show()
             button2.show()
+            game_title.show()
 
 nyan.start_program()
