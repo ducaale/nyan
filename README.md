@@ -663,6 +663,28 @@ Once a timer is created, it will have the following commands and properties:
 - **`timer.seconds`** — time elapsed in seconds since creation or last reset
 - **`timer.milliseconds`** — time elapsed in milliseconds since creation or last reset
 
+### `nyan.clamp()`
+
+Keeps a number between two values. Useful for constraining a sprite to a limited area.
+
+```python
+player = nyan.text('>')
+
+@nyan.repeat_forever
+def do():
+    if nyan.key_is_pressed('right'):
+        player.x += 1
+    if nyan.key_is_pressed('left'):
+        player.x -= 1
+    if nyan.key_is_pressed('up'):
+        player.y += 1
+    if nyan.key_is_pressed('down'):
+        player.y -= 1
+    
+    player.x = clamp(player.x, -400, 400)
+    player.x = clamp(player.y, -300, 300)
+```
+
 ## Packaging Nyan Programs
 Nyan comes with a packager that can be used to create stand-alone executables that can be shared with other people without them having to install Python on their computers. To use it, run the following in your terminal
 

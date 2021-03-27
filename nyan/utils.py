@@ -1,14 +1,8 @@
 import asyncio
 from functools import wraps
 
-import pygame
-
-def clamp(num, min_, max_):
-    if num < min_:
-        return min_
-    elif num > max_:
-        return max_
-    return num
+def clamp(num, lowest, highest):
+    return min(max(num, lowest), highest)
 
 def point_touching_sprite(point, sprite):
     return sprite.left <= point.x <= sprite.right and sprite.bottom <= point.y <= sprite.top

@@ -19,6 +19,7 @@ from .rect import Rect as _Rect
 from .circle import Circle as _Circle
 from .random import Random as _Random
 from .timer import new_timer
+from .utils import clamp
 
 _pygame.init()
 
