@@ -14,7 +14,7 @@ pygame = "^2.0.0"
 pytest = "^5.2"
 pyinstaller = "^3.6"
 pefile = { version = "^2019.4.18", markers = "sys_platform == 'win32'" }
-pywin32 = { version = "^227", markers = "sys_platform == 'win32'" }
+pywin32 = { version = "^304", markers = "sys_platform == 'win32'" }
 
 [tool.poetry.scripts]
 nyan-packager = 'nyan_packager:run'
