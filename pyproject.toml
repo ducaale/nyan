@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nyan"
-version = "0.13.1"
+version = "0.13.2"
 description = "The easiest way to start coding games and graphics projects in Python"
 authors = ["ducaale <sharaf.13@hotmail.com>"]
 license = "MIT"
@@ -10,11 +10,11 @@ include = ["nyan_packager.py"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-pygame = "^2.0.0"
+pygame = "^2.6.1"
 pytest = "^5.2"
 pyinstaller = "^3.6"
 pefile = { version = "^2019.4.18", markers = "sys_platform == 'win32'" }
-pywin32 = { version = "^304", markers = "sys_platform == 'win32'" }
+pywin32 = { version = "^308", markers = "sys_platform == 'win32'" }
 
 [tool.poetry.scripts]
 nyan-packager = 'nyan_packager:run'
