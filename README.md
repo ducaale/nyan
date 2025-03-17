@@ -41,7 +41,7 @@ Nyan is an excellent choice for beginner programmers to get started with graphic
 
 Make sure that you have Python 3.9 or greater. Run the following command in your terminal:
 ```
-uv install nyan
+pip install nyan
 ```
 
 # How to use Nyan
@@ -90,7 +90,7 @@ box = nyan.new_rect(
 
 This will put a tall, black Rectangle in the middle of the screen.
 
-If you want to change where the image is on the screen, try changing `x=0` (horizontal position) and `y=0` (vertical position). Just like Scratch, the middle of the screen is x=0, y=0. Increasing x moves the image right and decreasing x moves the image left. Likeswise, increasing y moves the image up and decreasing y moves the image down. You can also change the color by changing `'black'` to another color name, like `'orange'`.
+If you want to change where the image is on the screen, try changing `x=0` (horizontal position) and `y=0` (vertical position). Just like Scratch, the middle of the screen is x=0, y=0. Increasing x moves the image right and decreasing x moves the image left. Likewise, increasing y moves the image up and decreasing y moves the image down. You can also change the color by changing `'black'` to another color name, like `'orange'`.
 
 #### `nyan.new_image()`
 ```python
@@ -369,7 +369,7 @@ face2 = nyan.new_text('^_^', x=100, font_size=100)
 async def do(sprite):
     starting_words = sprite.text
     sprite.text = '*o*'
-    await play.sleep(seconds=1)
+    await nyan.sleep(seconds=1)
     sprite.text = starting_words
 ```
 
@@ -654,7 +654,7 @@ def do():
 Creates a timer. Useful for keeping track of time and for doing animations.
 
 ```python
-timer = new_timer()
+timer = nyan.new_timer()
 ```
 
 Once a timer is created, it will have the following commands and properties:
@@ -681,8 +681,8 @@ def do():
     if nyan.key_is_pressed('down'):
         player.y -= 1
     
-    player.x = clamp(player.x, -400, 400)
-    player.x = clamp(player.y, -300, 300)
+    player.x = nyan.clamp(player.x, -400, 400)
+    player.y = nyan.clamp(player.y, -300, 300)
 ```
 
 ## Packaging Nyan Programs
