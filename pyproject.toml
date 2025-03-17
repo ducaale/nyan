@@ -1,24 +1,25 @@
-[tool.poetry]
+[project]
 name = "nyan"
 version = "0.13.2"
 description = "The easiest way to start coding games and graphics projects in Python"
-authors = ["ducaale <sharaf.13@hotmail.com>"]
+authors = [
+    { name = "ducaale", email = "sharaf.13@hotmail.com" }
+]
+requires-python = ">=3.9"
 license = "MIT"
-repository = "https://github.com/ducaale/nyan"
 readme = "README.md"
-include = ["nyan_packager.py"]
 
-[tool.poetry.dependencies]
-python = "^3.7"
-pygame = "^2.6.1"
-pytest = "^5.2"
-pyinstaller = "^3.6"
-pefile = { version = "^2019.4.18", markers = "sys_platform == 'win32'" }
-pywin32 = { version = "^308", markers = "sys_platform == 'win32'" }
+dependencies = [
+    "pygame>=2.6.1",
+    "pyinstaller>=3.6",
+    "pefile>=2019.4.18; sys_platform == 'win32'",
+    "pywin32>=308; sys_platform == 'win32'"
+]
 
-[tool.poetry.scripts]
-nyan-packager = 'nyan_packager:run'
+[project.scripts]
+nyan-packager = "nyan_packager:run"
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
