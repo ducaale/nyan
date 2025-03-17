@@ -10,7 +10,7 @@ class CustomEvent():
     def broadcast(self, event):
         self.broadcasted_events.add(event)
 
-    def when_event_recieved(self, event):
+    def when_event_received(self, event):
         def decorator(func):
             self.callbacks[event].append(make_async(func))
             return func

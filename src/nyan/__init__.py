@@ -43,7 +43,7 @@ when_any_key_pressed = _keyboard.when_any_key_pressed
 when_any_key_released = _keyboard.when_any_key_released
 
 broadcast = _custom_event.broadcast
-when_event_recieved = _custom_event.when_event_recieved
+when_event_received = _custom_event.when_event_received
 
 random_color = _random.random_color
 random_number = _random.random_number

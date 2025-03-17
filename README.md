@@ -201,10 +201,10 @@ def do():
     nyan.broadcast('marco')
 ```
 
-#### `@nyan.when_event_recieved()`
-To run code in response to a broadcasted event, use `@nyan.when_event_recieved()`, like this
+#### `@nyan.when_event_received()`
+To run code in response to a broadcasted event, use `@nyan.when_event_received()`, like this
 ```python
-@nyan.when_event_recieved('marco')
+@nyan.when_event_received('marco')
 def do():
     print('polo')
 ```
