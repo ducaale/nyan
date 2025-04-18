@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-nyan-packager = "nyan_packager:run"
+nyan-packager = "nyan_packager.cli:run"
 
 [build-system]
 requires = ["hatchling"]

@@ -2,7 +2,6 @@
 
 import argparse
 import os
-import platform
 import shutil
 import warnings
 
@@ -19,9 +18,6 @@ def run():
     )
     parser.add_argument(
         '-d', '--debug', action='store_true', help='enable console output'
-    )
-    parser.add_argument(
-        '-f', '--onefile', action='store_true'
     )
     args = parser.parse_args()
 
@@ -40,18 +36,9 @@ def run():
         os.path.join(filename),
     ]
 
-    if args.onefile:
-        options.append('--onefile')
-        if os.path.exists('assets'):
-            shutil.copytree('assets', os.path.join('dist', 'assets'))
-    else:
-        options.append('--onedir')
-        if os.path.exists('assets'):
-            assets_src = os.path.join(dirname, 'assets')
-            assets_dest = 'assets'
-            separator = ';' if platform.system() == 'Windows' else ':'
-
-            options.append(f'--add-data={assets_src}{separator}{assets_dest}')
+    options.append('--onefile')
+    if os.path.exists('assets'):
+        shutil.copytree('assets', os.path.join('dist', 'assets'))
 
     if not args.debug:
         options.append('--windowed')

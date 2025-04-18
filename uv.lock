@@ -37,7 +37,7 @@ wheels = [
 
 [[package]]
 name = "nyan"
-version = "0.13.2"
+version = "0.13.3"
 source = { editable = "." }
 dependencies = [
     { name = "pefile", marker = "sys_platform == 'win32'" },
