@@ -33,12 +33,12 @@ def run():
         f'--name={name}',
         '--log-level=ERROR',
         '--distpath=dist',
+        '--onefile',
         os.path.join(filename),
     ]
 
-    options.append('--onefile')
     if os.path.exists('assets'):
-        shutil.copytree('assets', os.path.join('dist', 'assets'))
+        shutil.copytree('assets', os.path.join('dist', 'assets'), dirs_exist_ok=True)
 
     if not args.debug:
         options.append('--windowed')
